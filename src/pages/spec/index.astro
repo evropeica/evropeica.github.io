@@ -1,0 +1,114 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+
+<Base title="Specyfikacija">
+  <h1>Specyfikacija / Специфікація</h1>
+
+  <p>Evropeїca proponuje bahatorivnevu systemu, de kožnyj riveń dodaje praviła ponad poperednij.</p>
+  <p class="cyr">Європеїця пропонує багаторівневу систему, де кожний рівень додає правила понад попередній.</p>
+
+  <h2>Rivni / Рівні</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Riveń</th>
+        <th>Nazva</th>
+        <th>Opys</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>1.0</strong></td>
+        <td><a href="/spec/layer-1/">Transliteracija</a></td>
+        <td>Čysta transliteracija 1:1 z kyryłyci. Kožna kyrylyčna litera maje rivno odyn łatynskyj vidpovidnyk.</td>
+      </tr>
+      <tr>
+        <td><strong>1.x</strong></td>
+        <td>Rozšyrenńa</td>
+        <td>Pidtrymka dialektiv, staroukraїnskoї movy ta inšych variantiv.</td>
+      </tr>
+      <tr>
+        <td><strong>2.0</strong></td>
+        <td><a href="/spec/layer-2/">Orfohrafija</a></td>
+        <td>Orfohrafični pravyła dła słiv inozemnoho pochodženńa: zberezenia oryhinalnoї vymovy.</td>
+      </tr>
+      <tr>
+        <td><strong>3.0</strong></td>
+        <td><em>V rozrobci</em></td>
+        <td>Majbutni rozšyrenńa systemy.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Pryncypy pobudovy / Принципи побудови</h2>
+
+  <h3>Hrupy łyter / Групи літер</h3>
+
+  <div class="bilingual">
+    <div>
+      <div class="label">Латинка</div>
+      <ul>
+        <li><span class="dot green"></span> <strong>Zełena hrupa</strong> — zvuky, łatynskyj vidpovidnyk jakych zrozumilyj bez pojasnenja</li>
+        <li><span class="dot yellow"></span> <strong>Žovta hrupa</strong> — zvuky z kilkoma možłyvymy šlachamy peredači</li>
+        <li><span class="dot red"></span> <strong>Červona hrupa</strong> — zvuky z diakrytykoju (Č, Š, Ž, Ď, Ť...)</li>
+        <li><span class="dot purple"></span> <strong>Purpurna hrupa</strong> — dialektyčni ta archaїčni litery</li>
+        <li><span class="dot grey"></span> <strong>Sira hrupa</strong> — inšomovni łatynskyj litery (Q, X, W)</li>
+      </ul>
+    </div>
+    <div>
+      <div class="label">Кирилиця</div>
+      <ul>
+        <li><span class="dot green"></span> <strong>Зелена група</strong> — звуки, латинський відповідник яких зрозумілий без пояснення</li>
+        <li><span class="dot yellow"></span> <strong>Жовта група</strong> — звуки з кількома можливими шляхами передачі</li>
+        <li><span class="dot red"></span> <strong>Червона група</strong> — звуки з діакритикою (Č, Š, Ž, Ď, Ť...)</li>
+        <li><span class="dot purple"></span> <strong>Пурпурна група</strong> — діалектичні та архаїчні літери</li>
+        <li><span class="dot grey"></span> <strong>Сіра група</strong> — іншомовні латинські літери (Q, X, W)</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Perevaha diakrytyky / Перевага діакритики</h3>
+
+  <div class="bilingual">
+    <div>
+      <div class="label">Латинка</div>
+      <p>Abetka vykorystovuje litery z diakrytykoju (Č, Š, Ž) zamisť dyhrafiv (CH, SH, ZH), ščo skoročuje napysanńa słiv:</p>
+      <ul>
+        <li>Що — Shcho — <strong>Ščo</strong></li>
+        <li>Якщо — Yakshcho — <strong>Jakščo</strong></li>
+        <li>Житомир — Zhytomyr — <strong>Žytomyr</strong></li>
+        <li>Чернівці — Chernivtsi — <strong>Černivci</strong></li>
+      </ul>
+    </div>
+    <div>
+      <div class="label">Кирилиця</div>
+      <p>Абетка використовує літери з діакритикою (Č, Š, Ž) замість диграфів (CH, SH, ZH), що скорочує написання слів:</p>
+      <ul>
+        <li>Що — Shcho — <strong>Ščo</strong></li>
+        <li>Якщо — Yakshcho — <strong>Jakščo</strong></li>
+        <li>Житомир — Zhytomyr — <strong>Žytomyr</strong></li>
+        <li>Чернівці — Chernivtsi — <strong>Černivci</strong></li>
+      </ul>
+    </div>
+  </div>
+</Base>
+
+<style>
+  .cyr { color: var(--color-muted); font-style: italic; }
+  ul { padding-left: 1.5rem; }
+  li { margin-bottom: 0.4rem; }
+  .dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 0.3rem;
+  }
+  .green { background: #22c55e; }
+  .yellow { background: #eab308; }
+  .red { background: #ef4444; }
+  .purple { background: #a855f7; }
+  .grey { background: #9ca3af; }
+</style>
