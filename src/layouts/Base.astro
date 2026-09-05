@@ -266,9 +266,11 @@ const isActive = (href: string) => path === href.replace(/\/$/, '');
     grid-template-columns: 1fr 1fr;
     gap: 0 2.75rem;
     align-items: start;
-    margin-block: 0 1.5rem;
     max-width: none;
   }
+  div.bi, p.bi { margin-block: 0 1.5rem; }
+  h1.bi, h2.bi, h3.bi { align-items: baseline; }
+  h1.bi > .cyr, h2.bi > .cyr, h3.bi > .cyr { font-weight: inherit; }
   .bi > p { margin-bottom: 0; max-width: 42ch; }
   .bi > .cyr {
     color: var(--ink-soft);

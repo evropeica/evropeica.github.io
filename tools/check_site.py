@@ -263,20 +263,55 @@ HEADING_TAGS = {'h1', 'h2', 'h3'}
 LEADING_LABEL_RE = re.compile(r'^\s*(?:[a-zA-Z]\)|v?\d+(?:\.\d+)*\s*[—-])\s*', re.IGNORECASE)
 
 
+def flatten_text_checked(node):
+    """flatten_text, but ignoring any subtree marked class="no-check"
+    (ornaments such as the numbered badge on a card heading, which exist
+    only on the Latin side and would break word-position alignment)."""
+    parts = []
+
+    def walk(n):
+        if isinstance(n, TextNode):
+            parts.append(n.text)
+            return
+        if has_class(n, 'no-check'):
+            return
+        for c in n.children:
+            walk(c)
+
+    walk(node)
+    return re.sub(r'\s+', ' ', ''.join(parts)).strip()
+
+
 def collect_heading_twins(root):
+    """Headings come in two shapes (S3):
+
+    split (preferred, renders as two columns):
+        <h2 class="bi"><span class="lat">Lat</span><span class="cyr">Cyr</span></h2>
+    inline (legacy):
+        <h2>Lat / Cyr</h2>
+    """
     twins = []
 
     def walk(node):
         if isinstance(node, TextNode):
             return
         if node.tag in HEADING_TAGS:
-            text = flatten_text(node)
-            if ' / ' in text:
-                latin, cyr = text.split(' / ', 1)
-                cyr = cyr.strip()
-                if any(is_cyrillic_char(ch) for ch in cyr):
-                    latin = LEADING_LABEL_RE.sub('', latin.strip())
+            kids = elem_children(node)
+            cyr_kid = next((k for k in kids if has_class(k, 'cyr')), None)
+            lat_kid = next((k for k in kids if has_class(k, 'lat')), None)
+            if cyr_kid is not None and lat_kid is not None:
+                latin = LEADING_LABEL_RE.sub('', flatten_text_checked(lat_kid))
+                cyr = flatten_text_checked(cyr_kid)
+                if latin and cyr and any(is_cyrillic_char(ch) for ch in cyr):
                     twins.append((node.line, latin, cyr))
+            else:
+                text = flatten_text(node)
+                if ' / ' in text:
+                    latin, cyr = text.split(' / ', 1)
+                    cyr = cyr.strip()
+                    if any(is_cyrillic_char(ch) for ch in cyr):
+                        latin = LEADING_LABEL_RE.sub('', latin.strip())
+                        twins.append((node.line, latin, cyr))
         for c in node.children:
             walk(c)
 

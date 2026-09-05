@@ -57,7 +57,7 @@ const versions = [
   </section>
 
   <section class="demo" aria-labelledby="demo-h">
-    <h2 id="demo-h" class="demo-h">Sprobuj / Спробуй</h2>
+    <h2 id="demo-h" class="demo-h bi"><span class="lat">Sprobuj</span><span class="cyr">Спробуй</span></h2>
     <div class="demo-grid">
       <div class="demo-panel">
         <label class="demo-label" for="demo-in">Кирилиця</label>
@@ -70,11 +70,11 @@ const versions = [
     </div>
   </section>
 
-  <h2>Čomu, ščo, jak / Чому, що, як</h2>
+  <h2 class="bi"><span class="lat">Čomu, ščo, jak</span><span class="cyr">Чому, що, як</span></h2>
 
   <div class="story">
     <article class="story-card">
-      <h3 class="story-h"><span class="story-n">1</span> Čomu / Чому</h3>
+      <h3 class="story-h bi"><span class="lat"><span class="story-n no-check" aria-hidden="true">1</span> Čomu</span><span class="cyr">Чому</span></h3>
       <div class="bi">
         <p>Jevropéjśka intehrácija, technołohíčna sumísnisť i vłasnyj informacíjnyj prostir.</p>
         <p class="cyr">Європейська інтеграція, технологічна сумісність і власний інформаційний простір.</p>
@@ -86,7 +86,7 @@ const versions = [
     </article>
 
     <article class="story-card">
-      <h3 class="story-h"><span class="story-n">2</span> Ščo / Що</h3>
+      <h3 class="story-h bi"><span class="lat"><span class="story-n no-check" aria-hidden="true">2</span> Ščo</span><span class="cyr">Що</span></h3>
       <div class="bi">
         <p>Druha systéma pyśmá, a ne zamína kyrýłyci.</p>
         <p class="cyr">Друга система письма, а не заміна кирилиці.</p>
@@ -98,7 +98,7 @@ const versions = [
     </article>
 
     <article class="story-card">
-      <h3 class="story-h"><span class="story-n">3</span> Jak / Як</h3>
+      <h3 class="story-h bi"><span class="lat"><span class="story-n no-check" aria-hidden="true">3</span> Jak</span><span class="cyr">Як</span></h3>
       <div class="bi">
         <p>Spočátku standárt, potim instruménty: pravyła, konvérter, rozkłádka kłaviatúry.</p>
         <p class="cyr">Спочатку стандарт, потім інструменти: правила, конвертер, розкладка клавіатури.</p>
@@ -110,12 +110,12 @@ const versions = [
     </article>
   </div>
 
-  <p class="story-more">
-    <a href={withBase('/motyvacija/')}>Čytaty motyvaciju &rarr;</a>
-    <span class="cyr">/ Читати мотивацію</span>
+  <p class="story-more bi">
+    <span class="lat"><a href={withBase('/motyvacija/')}>Čytaty motyvaciju &rarr;</a></span>
+    <span class="cyr">Читати мотивацію</span>
   </p>
 
-  <h2>Versiï / Версії</h2>
+  <h2 class="bi"><span class="lat">Versiï</span><span class="cyr">Версії</span></h2>
 
   <div class="versions">
     {versions.map(v => (
@@ -124,7 +124,7 @@ const versions = [
           <a class="version-id" href={withBase(v.href)}>{v.id}</a>
           <span class:list={['chip', v.tone]}>{v.state}</span>
         </div>
-        <h3 class="version-name">{v.name} <span class="version-cyr">/ {v.cyr}</span></h3>
+        <h3 class="version-name bi"><span class="lat">{v.name}</span><span class="cyr">{v.cyr}</span></h3>
         <div class="bi">
           <p>{v.lat}</p>
           <p class="cyr">{v.cyrText}</p>
@@ -144,7 +144,7 @@ const versions = [
     </article>
   </div>
 
-  <h2>Abetka / Абетка</h2>
+  <h2 class="bi"><span class="lat">Abetka</span><span class="cyr">Абетка</span></h2>
 
   <ul class="alphabet" aria-label="Osnovna tabłyća">
     {alphabet.map(([c, l]) => (
@@ -152,12 +152,12 @@ const versions = [
     ))}
   </ul>
 
-  <p class="alphabet-note">
-    <a href={withBase('/spec/v1/')}>Povnyj zvid pravył &rarr;</a>
-    <span class="cyr">/ Повний звід правил</span>
+  <p class="alphabet-note bi">
+    <span class="lat"><a href={withBase('/spec/v1/')}>Povnyj zvid pravył &rarr;</a></span>
+    <span class="cyr">Повний звід правил</span>
   </p>
 
-  <h2>Pryncypy / Принципи</h2>
+  <h2 class="bi"><span class="lat">Pryncypy</span><span class="cyr">Принципи</span></h2>
 
   <div class="bilingual">
     <div>
@@ -274,7 +274,8 @@ const versions = [
     background: var(--surface);
     box-shadow: var(--shadow);
   }
-  .story-h { margin-top: 0; display: flex; align-items: center; gap: .55rem; font-size: 1.1rem; }
+  .story-h { margin-top: 0; font-size: 1.1rem; }
+  .story-h .lat { display: flex; align-items: center; gap: .55rem; }
   .story-n {
     display: grid; place-items: center;
     width: 1.55rem; height: 1.55rem; flex: none;
@@ -286,7 +287,7 @@ const versions = [
   .story-card p:last-child { margin-bottom: 0; }
   .story-card .cyr { font-size: .9rem; }
 
-  .story-more { font-family: var(--font-ui); font-size: .92rem; display: flex; gap: .4rem; flex-wrap: wrap; }
+  .story-more { font-family: var(--font-ui); font-size: .92rem; }
   .story-more .cyr { font-family: var(--font-serif); }
 
   /* ---------- versions ---------- */
@@ -330,7 +331,7 @@ const versions = [
   }
   .a-cyr { font-size: .82rem; color: var(--ink-faint); font-family: var(--font-ui); }
   .a-lat { font-size: 1.4rem; line-height: 1.1; }
-  .alphabet-note { font-family: var(--font-ui); font-size: .9rem; display: flex; gap: .4rem; flex-wrap: wrap; }
+  .alphabet-note { font-family: var(--font-ui); font-size: .9rem; }
   .alphabet-note .cyr { font-family: var(--font-serif); }
 
   /* ---------- responsive ---------- */
