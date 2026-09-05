@@ -2,7 +2,7 @@
 
 **A Latin orthography for Ukrainian — specified, implemented and tested.**
 
-🌐 **[akrivonos.github.io/evropeica](https://akrivonos.github.io/evropeica/)** · 📖 **[Rulebook](docs/RULEBOOK.md)** · ⌨️ **[Keyboard](public/keyboards/evropeica.kmx)**
+🌐 **[evropeica.github.io](https://evropeica.github.io/)** · 📖 **[Rulebook](docs/RULEBOOK.md)** · ⌨️ **[Keyboard](public/keyboards/evropeica.kmx)**
 
 Evropéïća (Європеїця) writes Ukrainian in the Latin alphabet using the Czech/Polish diacritic tradition — Č, Š, Ž, Ł, Ń — the same family as Belarusian Łacinka. It is not a romanization for passports; it is an attempt at an orthography you could actually read and write a language in.
 

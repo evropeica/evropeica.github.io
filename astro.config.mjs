@@ -1,10 +1,10 @@
 import { defineConfig } from 'astro/config';
 
-// GitHub Pages project site: https://akrivonos.github.io/evropeica/
-// To move to an org/user site (evropeica.github.io) or a custom domain, set
-// `site` to that origin and `base` to '/'. All internal links go through
-// src/lib/url.ts, so nothing else changes.
+// GitHub Pages organisation site: https://evropeica.github.io/
+// Served from the domain root, so `base` is '/'. Internal links still go
+// through src/lib/url.ts, which makes moving to a custom domain later a
+// one-line change here.
 export default defineConfig({
-  site: 'https://akrivonos.github.io',
-  base: '/evropeica',
+  site: 'https://evropeica.github.io',
+  base: '/',
 });

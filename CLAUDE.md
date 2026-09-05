@@ -25,7 +25,7 @@ Reference website + engine for the Evropéïća Ukrainian Latin orthography.
 - Brand is `Evropéïća` with Latin ï (U+00EF). Never Cyrillic ї inside Latin words, never ľ.
 
 ## Deployment
-GitHub Pages via `.github/workflows/deploy.yml` on push to `master`. The workflow runs the three checks before building. Published at https://akrivonos.github.io/evropeica/ with `base: '/evropeica'`; moving to a user/org site or custom domain means changing `site` and `base` in `astro.config.mjs` only.
+GitHub Pages via `.github/workflows/deploy.yml` on push to `master`. The workflow runs the three checks before building. Published at https://evropeica.github.io/ from the organisation repo `evropeica/evropeica.github.io`, served at the domain root (`base: '/'`). Internal links still go through `withBase()`, so a custom domain later means changing `site` in `astro.config.mjs` and adding a `CNAME`.
 
 ## Licensing
 Dual: MIT for code, CC BY 4.0 for the specification and site content. Keep new files consistent with that split and do not paste in text of unknown provenance.
