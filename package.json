@@ -14,5 +14,8 @@
   },
   "engines": {
     "node": ">=22.6"
+  },
+  "devDependencies": {
+    "@astrojs/sitemap": "^3.7.4"
   }
 }

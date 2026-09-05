@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://evropeica.github.io/sitemap-index.xml

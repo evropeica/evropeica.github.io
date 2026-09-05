@@ -44,6 +44,11 @@ const t = lang === 'en'
       theme: 'Zminyty temu',
       foot: 'Kod — MIT. Specyfikacija ta tekst — CC BY 4.0. © 2026' };
 const isActive = (href: string) => path === href.replace(/\/$/, '');
+
+const site = Astro.site ?? new URL('https://evropeica.github.io');
+const canonical = new URL(Astro.url.pathname, site).href;
+const ukHome = new URL(withBase('/'), site).href;
+const enHome = new URL(withBase('/en/'), site).href;
 ---
 
 <!doctype html>
@@ -55,6 +60,17 @@ const isActive = (href: string) => path === href.replace(/\/$/, '');
     <meta name="color-scheme" content="light dark" />
     <title>{title} | Evropéïća</title>
     <link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="uk" href={ukHome} />
+    <link rel="alternate" hreflang="en" href={enHome} />
+    <link rel="alternate" hreflang="x-default" href={ukHome} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Evropéïća" />
+    <meta property="og:title" content={`${title} | Evropéïća`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content={lang === 'en' ? 'en_GB' : 'uk_UA'} />
+    <meta name="twitter:card" content="summary" />
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href={withBase('/fonts/literata-latin-normal.woff2')} />
     <link rel="stylesheet" href={withBase('/fonts/literata.css')} />
