@@ -372,24 +372,26 @@ const isActive = (href: string) => path === href.replace(/\/$/, '');
   .foot-links { display: flex; gap: 1.2rem; flex-wrap: wrap; font-family: var(--font-ui); font-size: .88rem; }
   .foot-note { font-family: var(--font-ui); font-size: .8rem; color: var(--ink-faint); margin: 0; margin-left: auto; }
 
-  /* ---------- bilingual card block (lists) ---------- */
+  /* ---------- parallel list block ----------
+     Same two columns as .bi, so a block of parallel lists reads exactly like
+     a block of parallel paragraphs. */
   .bilingual {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
-    margin-block: 1.5rem 1.75rem;
-  }
-  .bilingual > div {
-    padding: 1.25rem 1.4rem;
-    border: 1px solid var(--rule); border-radius: var(--radius);
-    background: var(--surface);
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 0 clamp(1.25rem, 3.2vw, 2.75rem);
+    margin-block: 1.25rem 1.75rem;
+    align-items: start;
   }
   .bilingual > div > *:last-child { margin-bottom: 0; }
-  .bilingual .label {
-    font-family: var(--font-ui);
-    font-size: .68rem; text-transform: uppercase; letter-spacing: .1em;
-    color: var(--ink-faint); margin-bottom: .7rem; font-weight: 700;
+  .bilingual > div:last-child {
+    padding-left: 1.6rem;
+    border-left: 1px solid var(--rule);
+    color: var(--ink-soft);
   }
+  .bilingual > div:last-child :is(h3, h4) { color: var(--ink-soft); }
+
   @media (max-width: 52rem) {
-    .bilingual { grid-template-columns: 1fr; }
+    .bilingual { grid-template-columns: 1fr; gap: 1.25rem; }
+    .bilingual > div:last-child { padding-left: 0; border-left: 0; }
     h2 { margin-top: 2.75rem; }
   }
 </style>

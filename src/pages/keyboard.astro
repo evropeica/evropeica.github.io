@@ -51,11 +51,11 @@ const layers = {
 };
 ---
 
-<Base title="Kłaviatúra" description="Evropéïća keyboard layout reference">
-  <h1 class="bi"><span class="lat">Kłaviatúra</span><span class="cyr">Клавіатура</span></h1>
+<Base title="Kłaviatura" description="Evropéïća keyboard layout reference">
+  <h1 class="bi"><span class="lat">Kłaviatura</span><span class="cyr">Клавіатура</span></h1>
 
   <div class="bi">
-    <p>QWERTZ kłaviatúra z dvomá dead keys dla komponuváńńa diakrytýčnych liter (jak u nimećkych/francúźkych kłaviatúrach).</p>
+    <p>QWERTZ kłaviatura z dvoma dead keys dla komponuvańńa diakrytyčnych liter (jak u nimećkych/francuźkych kłaviaturach).</p>
     <p class="cyr">QWERTZ клавіатура з двома dead keys для компонування діакритичних літер (як у німецьких/французьких клавіатурах).</p>
   </div>
 
@@ -86,11 +86,10 @@ const layers = {
 
   <div class="bilingual">
     <div>
-      <div class="label">Łatynka</div>
-      <p>Standártnyj čysłovýj ŕad (cyfry bez Shift). Diakrytýčni litery stvóŕujuťśa čerez dvi dead keys — jak u nimećkij abo francúźkij rozkłádci:</p>
+      <p>Standartnyj čysłovyj ŕad (cyfry bez Shift). Diakrytyčni litery stvoŕujuťśa čerez dvi dead keys — jak u nimećkij abo francuźkij rozkładci:</p>
 
       <h3>Dead caron ˇ (kłaviša <code>`</code>)</h3>
-      <p>Natýsnuty <code>`</code>, potim bazovu literu:</p>
+      <p>Natysnuty <code>`</code>, potim bazovu literu:</p>
       <table class="compact">
         <tr><td><code>`</code> + c</td><td>→ č</td><td><code>`</code> + s</td><td>→ š</td></tr>
         <tr><td><code>`</code> + z</td><td>→ ž</td><td><code>`</code> + d</td><td>→ ď</td></tr>
@@ -98,13 +97,13 @@ const layers = {
       </table>
 
       <h3>Dead acute ´ (kłaviša <code>=</code>)</h3>
-      <p>Natýsnuty <code>=</code>, potim bazovu literu:</p>
+      <p>Natysnuty <code>=</code>, potim bazovu literu:</p>
       <table class="compact">
-        <tr><th colspan="4">Nahołos (hołosní)</th></tr>
+        <tr><th colspan="4">Nahołos (hołosni)</th></tr>
         <tr><td><code>=</code> + a → á</td><td><code>=</code> + e → é</td><td><code>=</code> + y → ý</td><td></td></tr>
         <tr><td><code>=</code> + i → í</td><td><code>=</code> + o → ó</td><td><code>=</code> + u → ú</td><td></td></tr>
         <tr><td colspan="2"><code>=</code> + AltGr + i → ḯ</td><td colspan="2"></td></tr>
-        <tr><th colspan="4">Mjakí pryhołosní</th></tr>
+        <tr><th colspan="4">Mjaki pryhołosni</th></tr>
         <tr><td><code>=</code> + s → ś</td><td><code>=</code> + z → ź</td><td><code>=</code> + c → ć</td><td></td></tr>
         <tr><td><code>=</code> + n → ń</td><td><code>=</code> + r → ŕ</td><td></td><td></td></tr>
       </table>
@@ -115,7 +114,6 @@ const layers = {
       </table>
     </div>
     <div>
-      <div class="label">Кирилиця</div>
       <p>Стандартний числовий ряд (цифри без Shift). Діакритичні літери створюються через дві dead keys — як у німецькій або французькій розкладці:</p>
 
       <h3>Dead caron ˇ (клавіша <code>`</code>)</h3>
@@ -145,32 +143,30 @@ const layers = {
     </div>
   </div>
 
-  <h2 class="bi"><span class="lat">Instalácija</span><span class="cyr">Інсталяція</span></h2>
+  <h2 class="bi"><span class="lat">Instalacija</span><span class="cyr">Інсталяція</span></h2>
 
   <div class="bilingual">
     <div>
-      <div class="label">Łatynka</div>
-      <h3>Keyman (vsi płatfórmy)</h3>
-      <p>Najprostíše rišeńńa — Keyman vid SIL International. Odná kłaviatúra dla Windows, macOS, Linux, iOS ta Android.</p>
+      <h3>Keyman (vsi płatformy)</h3>
+      <p>Najprostiše rišeńńa — Keyman vid SIL International. Odna kłaviatura dla Windows, macOS, Linux, iOS ta Android.</p>
       <ol>
-        <li>Vstanovýty <a href="https://keyman.com">Keyman</a></li>
-        <li>Dodáty kłaviatúru Evropéïća (<a href={withBase('/keyboards/evropeica.kmx')}>zavantážyty .kmx</a>)</li>
+        <li>Vstanovyty <a href="https://keyman.com">Keyman</a></li>
+        <li>Dodaty kłaviaturu Evropéïća (<a href={withBase('/keyboards/evropeica.kmx')}>zavantažyty .kmx</a>)</li>
       </ol>
 
       <h3>Windows</h3>
-      <p>MSKLC abo KbdEdit — stvorýty na bazi US QWERTY, pomińáty Y/Z (QWERTZ), dodáty dead keys ta AltGr šar.</p>
+      <p>MSKLC abo KbdEdit — stvoryty na bazi US QWERTY, pomińaty Y/Z (QWERTZ), dodaty dead keys ta AltGr šar.</p>
 
       <h3>macOS</h3>
-      <p>Ukelele — stvorýty .keylayout fajł z dead key stanamy.</p>
+      <p>Ukelele — stvoryty .keylayout fajł z dead key stanamy.</p>
 
       <h3>Linux</h3>
       <p>XKB symbols fajł v <code>~/.config/xkb/symbols/</code>.</p>
 
       <h3>iOS / Android</h3>
-      <p>Keyman — jedýnyj praktýčnyj šlach.</p>
+      <p>Keyman — jedynyj praktyčnyj šlach.</p>
     </div>
     <div>
-      <div class="label">Кирилиця</div>
       <h3>Keyman (всі платформи)</h3>
       <p>Найпростіше рішення — Keyman від SIL International. Одна клавіатура для Windows, macOS, Linux, iOS та Android.</p>
       <ol>
