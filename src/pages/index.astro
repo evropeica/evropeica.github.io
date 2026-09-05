@@ -41,8 +41,10 @@ const versions = [
     <p class="eyebrow">Ukraïnśka łatynka · Українська латинка</p>
     <h1 class="wordmark">Evropéïća</h1>
 
-    <p class="lede">Naša mova łatýnśkymy literamy — žyvá systéma pyśmá, a ne pasportna transliterácija.</p>
-    <p class="cyr lede-cyr">Наша мова латинськими літерами — жива система письма, а не паспортна транслітерація.</p>
+    <div class="bi">
+      <p class="lede">Naša mova łatýnśkymy literamy — žyvá systéma pyśmá, a ne pasportna transliterácija.</p>
+      <p class="cyr lede-cyr">Наша мова латинськими літерами — жива система письма, а не паспортна транслітерація.</p>
+    </div>
 
     <ul class="specimen" aria-label="Litery z diakrytykoju">
       {specimen.map(ch => <li>{ch}</li>)}
@@ -73,26 +75,38 @@ const versions = [
   <div class="story">
     <article class="story-card">
       <h3 class="story-h"><span class="story-n">1</span> Čomu / Чому</h3>
-      <p>Jevropéjśka intehrácija, technołohíčna sumísnisť i vłasnyj informacíjnyj prostir.</p>
-      <p class="cyr">Європейська інтеграція, технологічна сумісність і власний інформаційний простір.</p>
-      <p>Łatýnka robyť ukraḯnśke słovo zrozumíłym susídam bez poserédnyka.</p>
-      <p class="cyr">Латинка робить українське слово зрозумілим сусідам без посередника.</p>
+      <div class="bi">
+        <p>Jevropéjśka intehrácija, technołohíčna sumísnisť i vłasnyj informacíjnyj prostir.</p>
+        <p class="cyr">Європейська інтеграція, технологічна сумісність і власний інформаційний простір.</p>
+      </div>
+      <div class="bi">
+        <p>Łatýnka robyť ukraḯnśke słovo zrozumíłym susídam bez poserédnyka.</p>
+        <p class="cyr">Латинка робить українське слово зрозумілим сусідам без посередника.</p>
+      </div>
     </article>
 
     <article class="story-card">
       <h3 class="story-h"><span class="story-n">2</span> Ščo / Що</h3>
-      <p>Druha systéma pyśmá, a ne zamína kyrýłyci.</p>
-      <p class="cyr">Друга система письма, а не заміна кирилиці.</p>
-      <p>Obýdvi abétky žyvúť poruč, jak u serbiv. Kyrýłyća nikúdy ne znykáje.</p>
-      <p class="cyr">Обидві абетки живуть поруч, як у сербів. Кирилиця нікуди не зникає.</p>
+      <div class="bi">
+        <p>Druha systéma pyśmá, a ne zamína kyrýłyci.</p>
+        <p class="cyr">Друга система письма, а не заміна кирилиці.</p>
+      </div>
+      <div class="bi">
+        <p>Obýdvi abétky žyvúť poruč, jak u serbiv. Kyrýłyća nikúdy ne znykáje.</p>
+        <p class="cyr">Обидві абетки живуть поруч, як у сербів. Кирилиця нікуди не зникає.</p>
+      </div>
     </article>
 
     <article class="story-card">
       <h3 class="story-h"><span class="story-n">3</span> Jak / Як</h3>
-      <p>Spočátku standárt, potim instruménty: pravyła, konvérter, rozkłádka kłaviatúry.</p>
-      <p class="cyr">Спочатку стандарт, потім інструменти: правила, конвертер, розкладка клавіатури.</p>
-      <p>Dali — škoła, vydavcí, vyvisky j dokuménty.</p>
-      <p class="cyr">Далі — школа, видавці, вивіски й документи.</p>
+      <div class="bi">
+        <p>Spočátku standárt, potim instruménty: pravyła, konvérter, rozkłádka kłaviatúry.</p>
+        <p class="cyr">Спочатку стандарт, потім інструменти: правила, конвертер, розкладка клавіатури.</p>
+      </div>
+      <div class="bi">
+        <p>Dali — škoła, vydavcí, vyvisky j dokuménty.</p>
+        <p class="cyr">Далі — школа, видавці, вивіски й документи.</p>
+      </div>
     </article>
   </div>
 
@@ -111,8 +125,10 @@ const versions = [
           <span class:list={['chip', v.tone]}>{v.state}</span>
         </div>
         <h3 class="version-name">{v.name} <span class="version-cyr">/ {v.cyr}</span></h3>
-        <p>{v.lat}</p>
-        <p class="cyr">{v.cyrText}</p>
+        <div class="bi">
+          <p>{v.lat}</p>
+          <p class="cyr">{v.cyrText}</p>
+        </div>
       </article>
     ))}
     <article class="version version-muted">
@@ -121,8 +137,10 @@ const versions = [
         <span class="chip idea">v rozróbci</span>
       </div>
       <h3 class="version-name">&mdash;</h3>
-      <p>Majbútńe rozšýreńńa systémy. Detáli buduť vyznačeni pisla stabilizáciï versij 1.0 ta 2.0.</p>
-      <p class="cyr">Майбутнє розширення системи. Деталі будуть визначені після стабілізації версій 1.0 та 2.0.</p>
+      <div class="bi">
+        <p>Majbútńe rozšýreńńa systémy. Detáli buduť vyznačeni pisla stabilizáciï versij 1.0 ta 2.0.</p>
+        <p class="cyr">Майбутнє розширення системи. Деталі будуть визначені після стабілізації версій 1.0 та 2.0.</p>
+      </div>
     </article>
   </div>
 
@@ -208,11 +226,11 @@ const versions = [
     padding: .45rem .68rem;
     border: 1px solid var(--rule);
     border-radius: 7px;
-    background: var(--paper-raised);
+    background: var(--surface);
     color: var(--ink-soft);
     margin: 0;
   }
-  .specimen li:nth-child(4n+1) { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 35%, var(--rule)); }
+  .specimen li:nth-child(4n+1) { color: var(--brand); border-color: color-mix(in srgb, var(--brand) 35%, var(--rule)); }
 
   .actions { display: flex; flex-wrap: wrap; gap: .6rem; margin: 0; }
   .btn {
@@ -220,16 +238,13 @@ const versions = [
     padding: .55rem 1.1rem; border-radius: 8px;
     border: 1px solid var(--rule-strong);
     color: var(--ink); text-decoration: none;
-    background: var(--paper-raised);
+    background: var(--surface);
   }
-  .btn:hover { border-color: var(--accent); color: var(--accent); }
+  .btn:hover { border-color: var(--brand); color: var(--brand); }
   .btn-primary {
-    background: var(--accent); border-color: var(--accent); color: var(--paper-raised);
+    background: var(--brand); border-color: var(--brand); color: var(--on-brand);
   }
-  .btn-primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); color: var(--paper-raised); }
-  @media (prefers-color-scheme: dark) {
-    .btn-primary, .btn-primary:hover { color: #10151a; }
-  }
+  .btn-primary:hover { background: var(--brand-hover); border-color: var(--brand-hover); color: var(--on-brand); }
 
   /* ---------- live demo ---------- */
   .demo { margin-top: 2.5rem; }
@@ -244,19 +259,19 @@ const versions = [
     font-family: var(--font-serif); font-size: 1.05rem; line-height: 1.6;
     padding: .85rem 1rem; min-height: 6.5rem;
     border: 1px solid var(--rule); border-radius: var(--radius);
-    background: var(--paper-raised); color: var(--ink);
+    background: var(--surface); color: var(--ink);
     width: 100%;
   }
   #demo-in { resize: vertical; }
-  #demo-in:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
-  #demo-out { display: block; background: var(--paper-sunken); white-space: pre-wrap; }
+  #demo-in:focus { outline: none; border-color: var(--brand); box-shadow: 0 0 0 3px var(--brand-soft); }
+  #demo-out { display: block; background: var(--surface-2); white-space: pre-wrap; }
 
   /* ---------- why / what / how ---------- */
-  .story { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-bottom: 1rem; }
+  .story { display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 1.25rem; }
   .story-card {
-    padding: 1.4rem 1.35rem;
+    padding: 1.6rem 1.75rem;
     border: 1px solid var(--rule); border-radius: var(--radius);
-    background: var(--paper-raised);
+    background: var(--surface);
     box-shadow: var(--shadow);
   }
   .story-h { margin-top: 0; display: flex; align-items: center; gap: .55rem; font-size: 1.1rem; }
@@ -264,7 +279,7 @@ const versions = [
     display: grid; place-items: center;
     width: 1.55rem; height: 1.55rem; flex: none;
     border-radius: 50%;
-    background: var(--accent-soft); color: var(--accent);
+    background: var(--brand-soft); color: var(--brand);
     font-family: var(--font-ui); font-size: .8rem; font-weight: 700;
   }
   .story-card p { font-size: .98rem; }
@@ -275,26 +290,26 @@ const versions = [
   .story-more .cyr { font-family: var(--font-serif); }
 
   /* ---------- versions ---------- */
-  .versions { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+  .versions { display: flex; flex-direction: column; gap: 1.25rem; }
   .version {
-    padding: 1.3rem 1.35rem;
+    padding: 1.5rem 1.75rem;
     border: 1px solid var(--rule); border-radius: var(--radius);
-    background: var(--paper-raised);
+    background: var(--surface);
   }
   .version-muted { background: transparent; border-style: dashed; }
   .version-top { display: flex; align-items: center; gap: .6rem; margin-bottom: .5rem; }
   .version-id {
     font-family: var(--font-ui); font-weight: 700; font-size: .95rem;
-    color: var(--accent); text-decoration: none;
+    color: var(--brand); text-decoration: none;
   }
   .chip {
     font-family: var(--font-ui); font-size: .66rem; font-weight: 600;
     letter-spacing: .07em; text-transform: uppercase;
     padding: .18rem .5rem; border-radius: 999px;
   }
-  .chip.ready { background: var(--accent-soft); color: var(--accent); }
-  .chip.wip { background: var(--gold-soft); color: var(--gold); }
-  .chip.idea { background: var(--paper-sunken); color: var(--ink-faint); }
+  .chip.ready { background: var(--brand-soft); color: var(--brand); }
+  .chip.wip { background: var(--accent-soft); color: var(--accent); }
+  .chip.idea { background: var(--surface-2); color: var(--ink-faint); }
   .version-name { margin: 0 0 .5rem; font-size: 1.15rem; }
   .version-cyr { color: var(--ink-faint); font-weight: 400; font-size: .95rem; }
   .version p { font-size: .97rem; }
@@ -311,7 +326,7 @@ const versions = [
     display: flex; flex-direction: column; align-items: center; gap: .1rem;
     padding: .6rem .3rem;
     border: 1px solid var(--rule); border-radius: 8px;
-    background: var(--paper-raised); margin: 0;
+    background: var(--surface); margin: 0;
   }
   .a-cyr { font-size: .82rem; color: var(--ink-faint); font-family: var(--font-ui); }
   .a-lat { font-size: 1.4rem; line-height: 1.1; }
@@ -319,10 +334,6 @@ const versions = [
   .alphabet-note .cyr { font-family: var(--font-serif); }
 
   /* ---------- responsive ---------- */
-  @media (max-width: 60rem) {
-    .story { grid-template-columns: 1fr; }
-    .versions { grid-template-columns: 1fr; }
-  }
   @media (max-width: 44rem) {
     .demo-grid { grid-template-columns: 1fr; }
   }

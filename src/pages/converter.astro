@@ -5,8 +5,10 @@ import Base from '../layouts/Base.astro';
 <Base title="Konvérter" description="Live transliteration converter — type in Cyrillic, see Latin output">
   <h1>Konvérter / Конвертер</h1>
 
-  <p>Vvedíť tekst kyrýłyceju — pobáčyte rezultát łatýnkoju v reálnomu časi.</p>
-  <p class="cyr">Введіть текст кирилицею — побачите результат латинкою в реальному часі.</p>
+  <div class="bi">
+    <p>Vvedíť tekst kyrýłyceju — pobáčyte rezultát łatýnkoju v reálnomu časi.</p>
+    <p class="cyr">Введіть текст кирилицею — побачите результат латинкою в реальному часі.</p>
+  </div>
 
   <div class="converter">
     <div class="converter-panel">
@@ -53,7 +55,7 @@ import Base from '../layouts/Base.astro';
 </script>
 
 <style>
-  .cyr { color: var(--color-muted); font-style: italic; }
+  .cyr { color: var(--color-muted); }
 
   .converter {
     display: grid;
