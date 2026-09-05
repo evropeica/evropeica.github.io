@@ -133,13 +133,13 @@ const isActive = (href: string) => path === href.replace(/\/$/, '');
     --surface-2:    #efeadf;
     --ink:          #17252b;
     --ink-soft:     #4f5f66;
-    --ink-faint:    #77858a;
+    --ink-faint:    #5e6c72;
     --rule:         #ddd9cd;
     --rule-strong:  #c7c2b3;
     --brand:        #173f4f;
     --brand-hover:  #0f3140;
     --brand-soft:   #dce9e8;
-    --accent:       #a96d1f;
+    --accent:       #94580a;
     --accent-soft:  #f3e3c6;
     --on-brand:     #fffdf8;
 
@@ -264,7 +264,7 @@ const isActive = (href: string) => path === href.replace(/\/$/, '');
   .bi {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0 2.75rem;
+    gap: 0 clamp(1.25rem, 3.2vw, 2.75rem);
     align-items: start;
     max-width: none;
   }
@@ -280,7 +280,7 @@ const isActive = (href: string) => path === href.replace(/\/$/, '');
   }
   .cyr { color: var(--ink-soft); font-style: normal; }
 
-  @media (max-width: 48rem) {
+  @media (max-width: 52rem) {
     .bi { grid-template-columns: 1fr; gap: .45rem; }
     .bi > .cyr { padding-left: 0; border-left: 0; font-size: .96em; }
     .bi > p { max-width: none; }
@@ -388,7 +388,7 @@ const isActive = (href: string) => path === href.replace(/\/$/, '');
     font-size: .68rem; text-transform: uppercase; letter-spacing: .1em;
     color: var(--ink-faint); margin-bottom: .7rem; font-weight: 700;
   }
-  @media (max-width: 48rem) {
+  @media (max-width: 52rem) {
     .bilingual { grid-template-columns: 1fr; }
     h2 { margin-top: 2.75rem; }
   }

@@ -17,7 +17,8 @@ import Base from '../../layouts/Base.astro';
 
   <h2 class="bi"><span class="lat">Osnovna tabłyća</span><span class="cyr">Основна таблиця</span></h2>
 
-  <table>
+  <div class="table-wrap">
+    <table>
     <thead>
       <tr>
         <th>Кирилиця</th>
@@ -62,6 +63,7 @@ import Base from '../../layouts/Base.astro';
       <tr><td>Я я</td><td>Ja ja / a</td><td>яблуко</td><td>jabłuko</td></tr>
     </tbody>
   </table>
+  </div>
 
   <h2 class="bi"><span class="lat">Pravyła pomjakšeńńa</span><span class="cyr">Правила пом'якшення</span></h2>
 
@@ -70,7 +72,8 @@ import Base from '../../layouts/Base.astro';
     <p class="cyr">М'який знак не має власного латинського відповідника. Він змінює попередній приголосний:</p>
   </div>
 
-  <table>
+  <div class="table-wrap">
+    <table>
     <thead>
       <tr><th>Кирилиця</th><th>Латинка</th><th>Приклад</th><th>Результат</th></tr>
     </thead>
@@ -85,13 +88,15 @@ import Base from '../../layouts/Base.astro';
       <tr><td>ць</td><td>ć</td><td>хлопець</td><td>chłopeć</td></tr>
     </tbody>
   </table>
+  </div>
 
   <div class="bi">
     <p>Te same pered o:</p>
     <p class="cyr">Те саме перед o:</p>
   </div>
 
-  <table>
+  <div class="table-wrap">
+    <table>
     <thead><tr><th>Кирилиця</th><th>Латинка</th></tr></thead>
     <tbody>
       <tr><td>льон</td><td>lon</td></tr>
@@ -99,6 +104,7 @@ import Base from '../../layouts/Base.astro';
       <tr><td>трьох</td><td>tŕoch</td></tr>
     </tbody>
   </table>
+  </div>
 
   <h3 class="bi"><span class="lat">Mjakyj znak pered jotovanoju</span><span class="cyr">М'який знак перед йотованою</span></h3>
 
@@ -107,7 +113,8 @@ import Base from '../../layouts/Base.astro';
     <p class="cyr">Якщо після м'якого знака стоїть йотована голосна, пишемо м'який приголосний і повну форму голосної — знак позначає і м'якість, і звук j:</p>
   </div>
 
-  <table>
+  <div class="table-wrap">
+    <table>
     <thead><tr><th>Кирилиця</th><th>Латинка</th></tr></thead>
     <tbody>
       <tr><td>мільярд</td><td>miljard</td></tr>
@@ -117,13 +124,15 @@ import Base from '../../layouts/Base.astro';
       <tr><td>бульйон</td><td>buljon</td></tr>
     </tbody>
   </table>
+  </div>
 
   <div class="bi">
     <p>Tak zberihajeťśa riznyća miž tŕoma napysańńamy:</p>
     <p class="cyr">Так зберігається різниця між трьома написаннями:</p>
   </div>
 
-  <table>
+  <div class="table-wrap">
+    <table>
     <thead><tr><th>Кирилиця</th><th>Латинка</th></tr></thead>
     <tbody>
       <tr><td>ня</td><td>ńa</td></tr>
@@ -131,6 +140,7 @@ import Base from '../../layouts/Base.astro';
       <tr><td>н'я</td><td>nja</td></tr>
     </tbody>
   </table>
+  </div>
 
   <h2 class="bi"><span class="lat">Jotovani hołosni</span><span class="cyr">Йотовані голосні</span></h2>
 
@@ -139,7 +149,8 @@ import Base from '../../layouts/Base.astro';
     <p class="cyr">Ja, Ju, Je мають дві форми залежно від позиції:</p>
   </div>
 
-  <table>
+  <div class="table-wrap">
+    <table>
     <thead>
       <tr><th>Pozycija</th><th>Я</th><th>Ю</th><th>Є</th></tr>
     </thead>
@@ -148,9 +159,11 @@ import Base from '../../layouts/Base.astro';
       <tr><td>Pisla mjakoho pryhołosnoho (d z l n r s t c)</td><td>a</td><td>u</td><td>e</td></tr>
     </tbody>
   </table>
+  </div>
 
   <h3 class="bi"><span class="lat">Prykłady</span><span class="cyr">Приклади</span></h3>
-  <table>
+  <div class="table-wrap">
+    <table>
     <thead><tr><th>Кирилиця</th><th>Латинка</th><th>Правило</th></tr></thead>
     <tbody>
       <tr><td>яблуко</td><td>jabłuko</td><td>початок слова → ja</td></tr>
@@ -164,6 +177,7 @@ import Base from '../../layouts/Base.astro';
       <tr><td>об'єм</td><td>objem</td><td>після апострофа → je</td></tr>
     </tbody>
   </table>
+  </div>
 
   <h2 class="bi"><span class="lat">Podvojeni pryhołosni</span><span class="cyr">Подвоєні приголосні</span></h2>
 
@@ -172,7 +186,8 @@ import Base from '../../layouts/Base.astro';
     <p class="cyr">Якщо подвоєний м'який приголосний стоїть перед м'яким знаком або йотованою голосною (для l — також перед i), обидві літери пишемо м'якими. Так само робить чеська транскрипція українських слів.</p>
   </div>
 
-  <table>
+  <div class="table-wrap">
+    <table>
     <thead><tr><th>Кирилиця</th><th>Латинка</th></tr></thead>
     <tbody>
       <tr><td>знання</td><td>znańńa</td></tr>
@@ -184,13 +199,15 @@ import Base from '../../layouts/Base.astro';
       <tr><td>ллється</td><td>lleťśa</td></tr>
     </tbody>
   </table>
+  </div>
 
   <div class="bi">
     <p>Bez pomjakšeńńa podvojeńńa łyšajeťśa tverdym:</p>
     <p class="cyr">Без пом'якшення подвоєння лишається твердим:</p>
   </div>
 
-  <table>
+  <div class="table-wrap">
+    <table>
     <thead><tr><th>Кирилиця</th><th>Латинка</th></tr></thead>
     <tbody>
       <tr><td>Ганна</td><td>Hanna</td></tr>
@@ -198,16 +215,19 @@ import Base from '../../layouts/Base.astro';
       <tr><td>відділ</td><td>viddił</td></tr>
     </tbody>
   </table>
+  </div>
 
   <h2 class="bi"><span class="lat">Dyhrafy</span><span class="cyr">Диграфи</span></h2>
 
-  <table>
+  <div class="table-wrap">
+    <table>
     <thead><tr><th>Кирилиця</th><th>Латинка</th><th>Приклад</th><th>Результат</th></tr></thead>
     <tbody>
       <tr><td>дж</td><td>dž</td><td>джерело</td><td>džereło</td></tr>
       <tr><td>дз</td><td>dz</td><td>дзвін</td><td>dzvin</td></tr>
     </tbody>
   </table>
+  </div>
 
   <div class="bi">
     <p>Dž i dz — ce prosto d + ž, d + z. Riznyća miž afrykatoju (džereło) i zbihom na meži prefiksa (pidžyvyty) ne poznačajeťśa — jak u polśkij movi (dzwon, odzyskać).</p>
@@ -219,7 +239,8 @@ import Base from '../../layouts/Base.astro';
     <p class="cyr">Перед м'яким знаком або йотованою z пом'якшується як завжди:</p>
   </div>
 
-  <table>
+  <div class="table-wrap">
+    <table>
     <thead><tr><th>Кирилиця</th><th>Латинка</th></tr></thead>
     <tbody>
       <tr><td>ґедзь</td><td>gedź</td></tr>
@@ -227,6 +248,7 @@ import Base from '../../layouts/Base.astro';
       <tr><td>Дзюба</td><td>Dźuba</td></tr>
     </tbody>
   </table>
+  </div>
 
   <h2 class="bi"><span class="lat">Li — osobłyve pravyło</span><span class="cyr">Лі — особливе правило</span></h2>
 
@@ -235,7 +257,8 @@ import Base from '../../layouts/Base.astro';
     <p class="cyr">Ł перед i читається як м'яке l (без штриха). Перед іншими голосними і приголосними — ł:</p>
   </div>
 
-  <table>
+  <div class="table-wrap">
+    <table>
     <thead><tr><th>Кирилиця</th><th>Латинка</th></tr></thead>
     <tbody>
       <tr><td>ліс</td><td>lis</td></tr>
@@ -246,6 +269,7 @@ import Base from '../../layouts/Base.astro';
       <tr><td>хліб</td><td>chlib</td></tr>
     </tbody>
   </table>
+  </div>
 
   <h2 class="bi"><span class="lat">Apostrof</span><span class="cyr">Апостроф</span></h2>
 
@@ -254,7 +278,8 @@ import Base from '../../layouts/Base.astro';
     <p class="cyr">Апостроф не передається в латинському записі. Він слугує лише як розділовий знак між приголосним і йотованою голосною:</p>
   </div>
 
-  <table>
+  <div class="table-wrap">
+    <table>
     <thead><tr><th>Кирилиця</th><th>Латинка</th></tr></thead>
     <tbody>
       <tr><td>м'яч</td><td>mjač</td></tr>
@@ -266,6 +291,7 @@ import Base from '../../layouts/Base.astro';
       <tr><td>Мін'юст</td><td>Minjust</td></tr>
     </tbody>
   </table>
+  </div>
 
   <div class="bi">
     <p>Inši apostrofy (łapky, łatynśkyj tekst) zberihajuťśa.</p>
@@ -279,7 +305,8 @@ import Base from '../../layouts/Base.astro';
     <p class="cyr">У диграфах на початку слова велика лише перша літера. У словах, написаних повністю великими літерами, всі літери великі:</p>
   </div>
 
-  <table>
+  <div class="table-wrap">
+    <table>
     <thead><tr><th>Кирилиця</th><th>Латинка</th></tr></thead>
     <tbody>
       <tr><td>Що</td><td>Ščo</td></tr>
@@ -289,8 +316,9 @@ import Base from '../../layouts/Base.astro';
       <tr><td>ДЕНЬ</td><td>DEŃ</td></tr>
     </tbody>
   </table>
+  </div>
 </Base>
 
 <style>
-  .cyr { color: var(--color-muted); margin-bottom: 1rem; }
+  .cyr { color: var(--ink-soft); margin-bottom: 1rem; }
 </style>

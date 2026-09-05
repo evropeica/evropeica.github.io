@@ -206,7 +206,7 @@ const layers = {
 </script>
 
 <style>
-  .cyr { color: var(--color-muted); }
+  .cyr { color: var(--ink-soft); }
   ul, ol { padding-left: 1.5rem; margin-bottom: 1rem; }
   li { margin-bottom: 0.3rem; }
   h3 { margin-top: 1.5rem; }
@@ -214,31 +214,31 @@ const layers = {
   .layer-tabs {
     display: flex;
     gap: 0.5rem;
-    margin: 1.5rem 0 1rem;
-  }
+    margin: 1.5rem 0 1rem; flex-wrap: wrap; }
 
   .tab {
     padding: 0.4rem 1rem;
-    border: 1px solid var(--color-border);
+    border: 1px solid var(--rule);
     border-radius: 6px;
-    background: white;
+    background: var(--surface);
     cursor: pointer;
     font-size: 0.85rem;
     font-weight: 500;
     transition: all 0.15s;
   }
 
-  .tab:hover { border-color: var(--color-accent); }
+  .tab:hover { border-color: var(--brand); }
   .tab.active {
-    background: var(--color-accent);
-    color: white;
-    border-color: var(--color-accent);
+    background: var(--brand);
+    color: var(--on-brand);
+    border-color: var(--brand);
   }
 
   .keyboard { display: none; margin-bottom: 2rem; }
-  .keyboard.active { display: block; }
+  .keyboard.active { display: block; overflow-x: auto; padding-bottom: .5rem; }
 
   .row {
+    min-width: max-content;
     display: flex;
     gap: 4px;
     margin-bottom: 4px;
@@ -256,25 +256,26 @@ const layers = {
     align-items: center;
     justify-content: center;
     height: 3rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background: linear-gradient(to bottom, #fafafa, #e8e8e8);
+    border: 1px solid var(--rule-strong);
+    border-radius: 6px;
+    background: var(--surface);
+    color: var(--ink);
     font-size: 1.1rem;
     font-weight: 500;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    box-shadow: 0 1px 0 var(--rule);
     position: relative;
   }
 
   .key.empty {
-    background: #f5f5f5;
-    border-color: #e0e0e0;
-    color: #ccc;
+    background: var(--surface-2);
+    border-color: var(--rule);
+    color: var(--ink-faint);
   }
 
   .key.dead {
-    background: linear-gradient(to bottom, #fef3c7, #fde68a);
-    border-color: #f59e0b;
-    color: #92400e;
+    background: var(--accent-soft);
+    border-color: var(--accent);
+    color: var(--accent);
   }
 
   .key.small { font-size: 0.8rem; }
@@ -283,7 +284,7 @@ const layers = {
     font-size: 0.5rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    color: #b45309;
+    color: var(--accent);
     position: absolute;
     bottom: 2px;
   }
