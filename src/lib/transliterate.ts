@@ -1,6 +1,8 @@
 /**
- * Evropeica transliteration engine — Layer 1.0 (pure 1:1 from Cyrillic)
- * Based on 2019 Ukrainian pravopys.
+ * Evropéïća transliteration engine — v1.0 (1:1 from modern Ukrainian Cyrillic,
+ * 2019 pravopys). The normative description of every rule implemented here is
+ * docs/RULEBOOK.md; keep the two in sync and add a case to tests/cases.json
+ * for every rule you touch.
  */
 
 const CHAR_MAP: Record<string, string> = {
@@ -12,39 +14,55 @@ const CHAR_MAP: Record<string, string> = {
   'ц': 'c', 'ч': 'č', 'ш': 'š', 'щ': 'šč',
 };
 
+/** Consonants that have a dedicated soft letter (R3). */
 const SOFT_MAP: Record<string, string> = {
   'д': 'ď', 'з': 'ź', 'л': 'l', 'н': 'ń',
   'р': 'ŕ', 'с': 'ś', 'т': 'ť', 'ц': 'ć',
 };
 
+/** Iotated vowels: [full form after vowel/boundary/j, short form after a soft consonant]. */
 const IOTATED: Record<string, [string, string]> = {
   'я': ['ja', 'a'],
   'ю': ['ju', 'u'],
   'є': ['je', 'e'],
 };
 
-const APOSTROPHES = new Set(["'", '’', 'ʼ', ''', '‘']);
+const SOFT_SIGN = 'ь';
 
-function isUkrainianCyrillic(ch: string): boolean {
+function isApostrophe(ch: string): boolean {
   const code = ch.charCodeAt(0);
-  return (code >= 0x0400 && code <= 0x04FF) || ch === 'ґ' || ch === 'Ґ';
+  return code === 0x27 || code === 0x2019 || code === 0x02BC
+      || code === 0x2018 || code === 0x2032;
 }
 
-function isCyrillicVowel(ch: string): boolean {
-  return 'аеєиіїоуюя'.includes(ch.toLowerCase());
+function isCyrillic(ch: string | undefined): boolean {
+  if (!ch) return false;
+  const code = ch.charCodeAt(0);
+  return code >= 0x0400 && code <= 0x04FF;
 }
 
-function isWordBoundary(ch: string): boolean {
-  return !ch || /[\s\-–—]/.test(ch);
+function isIotatedOrJi(ch: string | undefined): boolean {
+  if (!ch) return false;
+  const l = ch.toLowerCase();
+  return l in IOTATED || l === 'ї';
+}
+
+/** Does `next` soften consonant `c`? ь and я/ю/є soften every soft-mappable consonant; і softens only л (R4). */
+function softens(c: string, next: string | undefined): boolean {
+  if (!next) return false;
+  const l = next.toLowerCase();
+  if (l === SOFT_SIGN || l in IOTATED) return true;
+  return c === 'л' && l === 'і';
 }
 
 function isAllCapsWord(tokens: string[], pos: number): boolean {
+  const inWord = (t: string | undefined) => !!t && (isCyrillic(t) || isApostrophe(t));
   let start = pos;
-  while (start > 0 && tokens[start - 1] && isUkrainianCyrillic(tokens[start - 1])) start--;
+  while (start > 0 && inWord(tokens[start - 1])) start--;
   let end = pos + 1;
-  while (end < tokens.length && tokens[end] && isUkrainianCyrillic(tokens[end])) end++;
-  const chars = tokens.slice(start, end).filter(t => isUkrainianCyrillic(t));
-  return chars.length > 1 && chars.every(c => c === c.toUpperCase());
+  while (end < tokens.length && inWord(tokens[end])) end++;
+  const letters = tokens.slice(start, end).filter(isCyrillic);
+  return letters.length > 1 && letters.every(c => c === c.toUpperCase());
 }
 
 function matchCase(source: string, target: string, allcaps: boolean): string {
@@ -56,125 +74,72 @@ function matchCase(source: string, target: string, allcaps: boolean): string {
   return target.toLowerCase();
 }
 
-const D_PREFIXES = new Set(['від', 'над', 'під', 'од', 'перед', 'серед']);
-
-function isPrefixBoundary(tokens: string[], dPos: number): boolean {
-  for (const prefix of D_PREFIXES) {
-    const plen = prefix.length;
-    if (dPos < plen - 1) continue;
-    const start = dPos - (plen - 1);
-    const candidate = tokens.slice(start, dPos + 1).map(t => t.toLowerCase()).join('');
-    if (candidate === prefix) {
-      if (start === 0 || !isUkrainianCyrillic(tokens[start - 1])) {
-        return true;
-      }
-    }
-  }
-  return false;
-}
-
 export function transliterate(input: string): string {
   const tokens = [...input];
-  const result: string[] = [];
+  const out: string[] = [];
   const n = tokens.length;
   let i = 0;
 
   while (i < n) {
     const tok = tokens[i];
+    const prev = i > 0 ? tokens[i - 1] : undefined;
+    const next1 = tokens[i + 1];
+    const next2 = tokens[i + 2];
 
-    if (APOSTROPHES.has(tok)) {
-      i++;
-      continue;
+    // R7 — apostrophe: suppressed only as a Cyrillic separator (consonant + apostrophe + я/ю/є/ї);
+    // any other apostrophe (quotation marks, Latin text) passes through.
+    if (isApostrophe(tok)) {
+      if (isCyrillic(prev) && isIotatedOrJi(next1)) { i++; continue; }
+      out.push(tok); i++; continue;
     }
 
-    if (!isUkrainianCyrillic(tok)) {
-      result.push(tok);
-      i++;
-      continue;
-    }
+    if (!isCyrillic(tok)) { out.push(tok); i++; continue; }
 
     const lower = tok.toLowerCase();
     const allcaps = isAllCapsWord(tokens, i);
+    const put = (s: string, src: string = tok) => out.push(matchCase(src, s, allcaps));
 
-    // Soft sign
-    if (lower === 'ь') {
-      i++;
-      continue;
-    }
+    if (lower in SOFT_MAP) {
+      const soft = SOFT_MAP[lower];
+      const l1 = next1?.toLowerCase();
 
-    // Digraphs: дж, дз
-    if (lower === 'д' && i + 1 < n) {
-      const next = tokens[i + 1]?.toLowerCase();
-      if (next === 'ж' && !isPrefixBoundary(tokens, i)) {
-        result.push(matchCase(tok, 'dž', allcaps));
-        i += 2;
-        continue;
-      }
-      if (next === 'з' && !isPrefixBoundary(tokens, i)) {
-        result.push(matchCase(tok, 'dz', allcaps));
-        i += 2;
-        continue;
-      }
-    }
+      // R6 — geminate: the same soft-mappable letter twice + softener → both soft (znańńa, Illa).
+      if (l1 === lower && softens(lower, next2)) { put(soft); i++; continue; }
 
-    // Iotated vowels: я, ю, є
-    if (lower in IOTATED) {
-      const [full, short] = IOTATED[lower];
-      const prev = i > 0 ? tokens[i - 1] : '';
-      const prevLower = prev.toLowerCase();
-
-      // After soft sign → short form (consonant was already softened)
-      if (prevLower === 'ь') {
-        result.push(matchCase(tok, short, allcaps));
-        i++;
-        continue;
+      // R5 — consonant + ь
+      if (l1 === SOFT_SIGN) {
+        const l2 = next2?.toLowerCase();
+        if (l2 && l2 in IOTATED) {           // R5b: нья/нью/ньє → ńja/ńju/ńje (soft + j + vowel)
+          put(soft); put(IOTATED[l2][0], next2); i += 3; continue;
+        }
+        put(soft); i += 2; continue;          // R5a: нь → ń (also before о: льон → lon)
       }
 
-      // Word-initial or after boundary/apostrophe → full iotated form
-      if (i === 0 || isWordBoundary(prev) || APOSTROPHES.has(prev) || !isUkrainianCyrillic(prev)) {
-        result.push(matchCase(tok, full, allcaps));
-        i++;
-        continue;
+      // R3 — consonant + я/ю/є → soft consonant + plain vowel
+      if (l1 && l1 in IOTATED) {
+        put(soft); put(IOTATED[l1][1], next1); i += 2; continue;
       }
 
-      // After vowel → full iotated form
-      if (isCyrillicVowel(prev)) {
-        result.push(matchCase(tok, full, allcaps));
-        i++;
-        continue;
-      }
-
-      // After consonant mid-word → full iotated form
-      result.push(matchCase(tok, full, allcaps));
-      i++;
-      continue;
+      // R4 — л before і is soft l; everywhere else л is ł
+      if (lower === 'л' && l1 === 'і') { put('l'); i++; continue; }
     }
 
-    // Soft consonant: consonant followed by ь
-    if (lower in SOFT_MAP && i + 1 < n && tokens[i + 1]?.toLowerCase() === 'ь') {
-      result.push(matchCase(tok, SOFT_MAP[lower], allcaps));
-      i += 2;
-      continue;
+    // R5c — ь after a consonant without a soft letter (rare: foreign/dialect words)
+    if (lower === SOFT_SIGN) {
+      const l1 = next1?.toLowerCase();
+      if (l1 && l1 in IOTATED) { i++; continue; }      // бья → bja: the vowel supplies j
+      if (l1 === 'о') { put('j'); i++; continue; }     // бьо → bjo
+      put('ĭ'); i++; continue;                          // residual: ĭ
     }
 
-    // Л before і → soft l (no stroke)
-    if (lower === 'л' && i + 1 < n && tokens[i + 1]?.toLowerCase() === 'і') {
-      result.push(matchCase(tok, 'l', allcaps));
-      i++;
-      continue;
-    }
+    // R2 — iotated vowel not consumed by a soft consonant: always full form (ja/ju/je)
+    if (lower in IOTATED) { put(IOTATED[lower][0]); i++; continue; }
 
-    // Standard character map
-    if (lower in CHAR_MAP) {
-      result.push(matchCase(tok, CHAR_MAP[lower], allcaps));
-      i++;
-      continue;
-    }
+    if (lower in CHAR_MAP) { put(CHAR_MAP[lower]); i++; continue; }
 
-    // Passthrough for unmapped Cyrillic
-    result.push(tok);
-    i++;
+    // Non-Ukrainian Cyrillic (ы э ъ ё …) passes through unchanged (reserved for v1.x).
+    out.push(tok); i++;
   }
 
-  return result.join('');
+  return out.join('');
 }

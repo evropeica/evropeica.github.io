@@ -1,0 +1,266 @@
+---
+import Base from '../../layouts/Base.astro';
+---
+
+<Base title="v1.0 — Transliteracija">
+  <h1>v1.0 — Transliteracija / Транслітерація</h1>
+
+  <p>Čysta transliteracija 1:1 z kyryłyci sučasnoï ukraïnśkoï movy na osnovi pravopysu 2019 roku. Kožna kyryłyčna litera maje rivno odyn łatynśkyj vidpovidnyk.</p>
+  <p class="cyr">Чиста транслітерація 1:1 з кирилиці сучасної української мови на основі правопису 2019 року. Кожна кирилична літера має рівно один латинський відповідник.</p>
+
+  <p>Ća storinka napysana čystoju versijeju 1.0 — bez nahołosiv i bez pravył 2.0.</p>
+  <p class="cyr">Ця сторінка написана чистою версією 1.0 — без наголосів і без правил 2.0.</p>
+
+  <h2>Osnovna tabłyća / Основна таблиця</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Кирилиця</th>
+        <th>Латинка</th>
+        <th>Приклад (Cyr)</th>
+        <th>Приклад (Lat)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>А а</td><td>A a</td><td>абетка</td><td>abetka</td></tr>
+      <tr><td>Б б</td><td>B b</td><td>батько</td><td>baťko</td></tr>
+      <tr><td>В в</td><td>V v</td><td>вода</td><td>voda</td></tr>
+      <tr><td>Г г</td><td>H h</td><td>голова</td><td>hołova</td></tr>
+      <tr><td>Ґ ґ</td><td>G g</td><td>ґанок</td><td>ganok</td></tr>
+      <tr><td>Д д</td><td>D d</td><td>дім</td><td>dim</td></tr>
+      <tr><td>Е е</td><td>E e</td><td>ефір</td><td>efir</td></tr>
+      <tr><td>Є є</td><td>Je je / e</td><td>єдність</td><td>jednisť</td></tr>
+      <tr><td>Ж ж</td><td>Ž ž</td><td>жити</td><td>žyty</td></tr>
+      <tr><td>З з</td><td>Z z</td><td>земля</td><td>zemla</td></tr>
+      <tr><td>И и</td><td>Y y</td><td>книга</td><td>knyha</td></tr>
+      <tr><td>І і</td><td>I i</td><td>ідея</td><td>ideja</td></tr>
+      <tr><td>Ї ї</td><td>Ï ï</td><td>їжак</td><td>ïžak</td></tr>
+      <tr><td>Й й</td><td>J j</td><td>край</td><td>kraj</td></tr>
+      <tr><td>К к</td><td>K k</td><td>книга</td><td>knyha</td></tr>
+      <tr><td>Л л</td><td>Ł ł / L l</td><td>ламати</td><td>łamaty</td></tr>
+      <tr><td>М м</td><td>M m</td><td>море</td><td>more</td></tr>
+      <tr><td>Н н</td><td>N n</td><td>небо</td><td>nebo</td></tr>
+      <tr><td>О о</td><td>O o</td><td>око</td><td>oko</td></tr>
+      <tr><td>П п</td><td>P p</td><td>правда</td><td>pravda</td></tr>
+      <tr><td>Р р</td><td>R r</td><td>рука</td><td>ruka</td></tr>
+      <tr><td>С с</td><td>S s</td><td>сонце</td><td>sonce</td></tr>
+      <tr><td>Т т</td><td>T t</td><td>тато</td><td>tato</td></tr>
+      <tr><td>У у</td><td>U u</td><td>увага</td><td>uvaha</td></tr>
+      <tr><td>Ф ф</td><td>F f</td><td>фарба</td><td>farba</td></tr>
+      <tr><td>Х х</td><td>Ch ch</td><td>хліб</td><td>chlib</td></tr>
+      <tr><td>Ц ц</td><td>C c</td><td>цукор</td><td>cukor</td></tr>
+      <tr><td>Ч ч</td><td>Č č</td><td>час</td><td>čas</td></tr>
+      <tr><td>Ш ш</td><td>Š š</td><td>школа</td><td>škoła</td></tr>
+      <tr><td>Щ щ</td><td>Šč šč</td><td>щастя</td><td>ščasťa</td></tr>
+      <tr><td>Ь ь</td><td>Ĭ ĭ (pomjakšuje)</td><td>день</td><td>deń</td></tr>
+      <tr><td>Ю ю</td><td>Ju ju / u</td><td>юнак</td><td>junak</td></tr>
+      <tr><td>Я я</td><td>Ja ja / a</td><td>яблуко</td><td>jabłuko</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Pravyła pomjakšeńńa / Правила пом'якшення</h2>
+
+  <p>Mjakyj znak ne maje vłasnoho łatynśkoho vidpovidnyka. Vin zmińuje poperednij pryhołosnyj:</p>
+  <p class="cyr">М'який знак не має власного латинського відповідника. Він змінює попередній приголосний:</p>
+
+  <table>
+    <thead>
+      <tr><th>Кирилиця</th><th>Латинка</th><th>Приклад</th><th>Результат</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>дь</td><td>ď</td><td>мідь</td><td>miď</td></tr>
+      <tr><td>зь</td><td>ź</td><td>різьба</td><td>riźba</td></tr>
+      <tr><td>ль</td><td>l</td><td>сіль</td><td>sil</td></tr>
+      <tr><td>нь</td><td>ń</td><td>день</td><td>deń</td></tr>
+      <tr><td>рь</td><td>ŕ</td><td>трьох</td><td>tŕoch</td></tr>
+      <tr><td>сь</td><td>ś</td><td>вісь</td><td>viś</td></tr>
+      <tr><td>ть</td><td>ť</td><td>тінь</td><td>tiń</td></tr>
+      <tr><td>ць</td><td>ć</td><td>хлопець</td><td>chłopeć</td></tr>
+    </tbody>
+  </table>
+
+  <p>Te same pered o:</p>
+  <p class="cyr">Те саме перед o:</p>
+
+  <table>
+    <thead><tr><th>Кирилиця</th><th>Латинка</th></tr></thead>
+    <tbody>
+      <tr><td>льон</td><td>lon</td></tr>
+      <tr><td>сьогодні</td><td>śohodni</td></tr>
+      <tr><td>трьох</td><td>tŕoch</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Mjakyj znak pered jotovanoju / М'який знак перед йотованою</h3>
+
+  <p>Jakščo pisla mjakoho znaka stoïť jotovana hołosna, pyšemo mjakyj pryhołosnyj i povnu formu hołosnoï — znak poznačaje i mjakisť, i zvuk j:</p>
+  <p class="cyr">Якщо після м'якого знака стоїть йотована голосна, пишемо м'який приголосний і повну форму голосної — знак позначає і м'якість, і звук j:</p>
+
+  <table>
+    <thead><tr><th>Кирилиця</th><th>Латинка</th></tr></thead>
+    <tbody>
+      <tr><td>мільярд</td><td>miljard</td></tr>
+      <tr><td>коньяк</td><td>końjak</td></tr>
+      <tr><td>Ньютон</td><td>Ńjuton</td></tr>
+      <tr><td>Нью-Йорк</td><td>Ńju-Jork</td></tr>
+      <tr><td>бульйон</td><td>buljon</td></tr>
+    </tbody>
+  </table>
+
+  <p>Tak zberihajeťśa riznyća miž tŕoma napysańńamy:</p>
+  <p class="cyr">Так зберігається різниця між трьома написаннями:</p>
+
+  <table>
+    <thead><tr><th>Кирилиця</th><th>Латинка</th></tr></thead>
+    <tbody>
+      <tr><td>ня</td><td>ńa</td></tr>
+      <tr><td>нья</td><td>ńja</td></tr>
+      <tr><td>н'я</td><td>nja</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Jotovani hołosni / Йотовані голосні</h2>
+
+  <p>Ja, Ju, Je majuť dvi formy załežno vid pozyciï:</p>
+  <p class="cyr">Ja, Ju, Je мають дві форми залежно від позиції:</p>
+
+  <table>
+    <thead>
+      <tr><th>Pozycija</th><th>Я</th><th>Ю</th><th>Є</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Na počatku słova, pisla hołosnoï, pisla apostrofa, pisla tverdoho pryhołosnoho</td><td>ja</td><td>ju</td><td>je</td></tr>
+      <tr><td>Pisla mjakoho pryhołosnoho (d z l n r s t c)</td><td>a</td><td>u</td><td>e</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Prykłady / Приклади</h3>
+  <table>
+    <thead><tr><th>Кирилиця</th><th>Латинка</th><th>Правило</th></tr></thead>
+    <tbody>
+      <tr><td>яблуко</td><td>jabłuko</td><td>початок слова → ja</td></tr>
+      <tr><td>моя</td><td>moja</td><td>після голосної → ja</td></tr>
+      <tr><td>м'яч</td><td>mjač</td><td>після апострофа → ja</td></tr>
+      <tr><td>свято</td><td>svjato</td><td>після твердого приголосного → ja</td></tr>
+      <tr><td>земля</td><td>zemla</td><td>після м'якого приголосного → a</td></tr>
+      <tr><td>люди</td><td>ludy</td><td>після м'якого приголосного → u</td></tr>
+      <tr><td>юнак</td><td>junak</td><td>початок слова → ju</td></tr>
+      <tr><td>єдність</td><td>jednisť</td><td>початок слова → je</td></tr>
+      <tr><td>об'єм</td><td>objem</td><td>після апострофа → je</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Podvojeni pryhołosni / Подвоєні приголосні</h2>
+
+  <p>Jakščo podvojenyj mjakyj pryhołosnyj stoïť pered mjakym znakom abo jotovanoju hołosnoju (dla l — takož pered i), obydvi litery pyšemo mjakymy. Tak samo robyť čeśka transkrypcija ukraïnśkych sliv.</p>
+  <p class="cyr">Якщо подвоєний м'який приголосний стоїть перед м'яким знаком або йотованою голосною (для l — також перед i), обидві літери пишемо м'якими. Так само робить чеська транскрипція українських слів.</p>
+
+  <table>
+    <thead><tr><th>Кирилиця</th><th>Латинка</th></tr></thead>
+    <tbody>
+      <tr><td>знання</td><td>znańńa</td></tr>
+      <tr><td>життя</td><td>žyťťa</td></tr>
+      <tr><td>Ілля</td><td>Illa</td></tr>
+      <tr><td>суддя</td><td>suďďa</td></tr>
+      <tr><td>стаття</td><td>staťťa</td></tr>
+      <tr><td>Полісся</td><td>Poliśśa</td></tr>
+      <tr><td>ллється</td><td>lleťśa</td></tr>
+    </tbody>
+  </table>
+
+  <p>Bez pomjakšeńńa podvojeńńa łyšajeťśa tverdym:</p>
+  <p class="cyr">Без пом'якшення подвоєння лишається твердим:</p>
+
+  <table>
+    <thead><tr><th>Кирилиця</th><th>Латинка</th></tr></thead>
+    <tbody>
+      <tr><td>Ганна</td><td>Hanna</td></tr>
+      <tr><td>Вінниця</td><td>Vinnyća</td></tr>
+      <tr><td>відділ</td><td>viddił</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Dyhrafy / Диграфи</h2>
+
+  <table>
+    <thead><tr><th>Кирилиця</th><th>Латинка</th><th>Приклад</th><th>Результат</th></tr></thead>
+    <tbody>
+      <tr><td>дж</td><td>dž</td><td>джерело</td><td>džereło</td></tr>
+      <tr><td>дз</td><td>dz</td><td>дзвін</td><td>dzvin</td></tr>
+    </tbody>
+  </table>
+
+  <p>Dž i dz — ce prosto d + ž, d + z. Riznyća miž afrykatoju (džereło) i zbihom na meži prefiksa (pidžyvyty) ne poznačajeťśa — jak u polśkij movi (dzwon, odzyskać).</p>
+  <p class="cyr">Dž і dz — це просто d + ž, d + z. Різниця між африкатою (джерело) і збігом на межі префікса (підживити) не позначається — як у польській мові (dzwon, odzyskać).</p>
+
+  <p>Pered mjakym znakom abo jotovanoju z pomjakšujeťśa jak zavždy:</p>
+  <p class="cyr">Перед м'яким знаком або йотованою z пом'якшується як завжди:</p>
+
+  <table>
+    <thead><tr><th>Кирилиця</th><th>Латинка</th></tr></thead>
+    <tbody>
+      <tr><td>ґедзь</td><td>gedź</td></tr>
+      <tr><td>дзьоб</td><td>dźob</td></tr>
+      <tr><td>Дзюба</td><td>Dźuba</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Li — osobłyve pravyło / Лі — особливе правило</h2>
+
+  <p>Ł pered i čytajeťśa jak mjake l (bez štrycha). Pered inšymy hołosnymy i pryhołosnymy — ł:</p>
+  <p class="cyr">Ł перед i читається як м'яке l (без штриха). Перед іншими голосними і приголосними — ł:</p>
+
+  <table>
+    <thead><tr><th>Кирилиця</th><th>Латинка</th></tr></thead>
+    <tbody>
+      <tr><td>ліс</td><td>lis</td></tr>
+      <tr><td>літо</td><td>lito</td></tr>
+      <tr><td>Львів</td><td>Lviv</td></tr>
+      <tr><td>лис</td><td>łys</td></tr>
+      <tr><td>лампа</td><td>łampa</td></tr>
+      <tr><td>хліб</td><td>chlib</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Apostrof / Апостроф</h2>
+
+  <p>Apostrof ne peredajeťśa v łatynśkomu zapysi. Vin słuhuje łyše jak rozdiłovyj znak miž pryhołosnym i jotovanoju hołosnoju:</p>
+  <p class="cyr">Апостроф не передається в латинському записі. Він слугує лише як розділовий знак між приголосним і йотованою голосною:</p>
+
+  <table>
+    <thead><tr><th>Кирилиця</th><th>Латинка</th></tr></thead>
+    <tbody>
+      <tr><td>м'яч</td><td>mjač</td></tr>
+      <tr><td>п'ять</td><td>pjať</td></tr>
+      <tr><td>об'єм</td><td>objem</td></tr>
+      <tr><td>кур'єр</td><td>kurjer</td></tr>
+      <tr><td>пір'я</td><td>pirja</td></tr>
+      <tr><td>з'їзд</td><td>zïzd</td></tr>
+      <tr><td>Мін'юст</td><td>Minjust</td></tr>
+    </tbody>
+  </table>
+
+  <p>Inši apostrofy (łapky, łatynśkyj tekst) zberihajuťśa.</p>
+  <p class="cyr">Інші апострофи (лапки, латинський текст) зберігаються.</p>
+
+  <h2>Vełyki litery / Великі літери</h2>
+
+  <p>U dyhrafach na počatku słova vełyka łyše perša litera. U słovach, napysanych povnisťu vełykymy literamy, vsi litery vełyki:</p>
+  <p class="cyr">У диграфах на початку слова велика лише перша літера. У словах, написаних повністю великими літерами, всі літери великі:</p>
+
+  <table>
+    <thead><tr><th>Кирилиця</th><th>Латинка</th></tr></thead>
+    <tbody>
+      <tr><td>Що</td><td>Ščo</td></tr>
+      <tr><td>ЩО</td><td>ŠČO</td></tr>
+      <tr><td>Харків</td><td>Charkiv</td></tr>
+      <tr><td>ЄС</td><td>JES</td></tr>
+      <tr><td>ДЕНЬ</td><td>DEŃ</td></tr>
+    </tbody>
+  </table>
+</Base>
+
+<style>
+  .cyr { color: var(--color-muted); font-style: italic; margin-bottom: 1rem; }
+</style>

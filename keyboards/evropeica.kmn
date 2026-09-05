@@ -1,0 +1,114 @@
+c Evropéïća keyboard layout
+c QWERTZ base with dead-key composition (German/French style)
+c
+c Standard number row (digits without Shift)
+c Dead caron (ˇ): backtick key → then c=č, s=š, z=ž, d=ď, t=ť
+c Dead acute (´): equals key → then vowel=stressed, s=ś, z=ź, c=ć, n=ń, r=ŕ,
+c   plus stressed ï via dk(2) + AltGr+I → ḯ (dk(2) + [RALT K_I] combines fine
+c   in Keyman, since dead-key context and RALT modifier are independent)
+c AltGr: L=ł, I=ï, B=ĭ
+
+store(&VERSION) '10.0'
+store(&NAME) 'Evropéïća'
+store(&COPYRIGHT) '(c) 2026 Evropéïća Project'
+store(&KEYBOARDVERSION) '1.1'
+store(&TARGETS) 'any'
+
+begin Unicode > use(main)
+
+group(main) using keys
+
+c ================================================================
+c  QWERTZ letter swap
+c ================================================================
++ [K_Y] > 'z'
++ [SHIFT K_Y] > 'Z'
++ [K_Z] > 'y'
++ [SHIFT K_Z] > 'Y'
+
+c ================================================================
+c  DEAD CARON (ˇ) — backtick key
+c  For: č š ž ď ť
+c ================================================================
++ [K_BKQUOTE] > dk(1)
+
+dk(1) + [K_C] > U+010D         c č
+dk(1) + [SHIFT K_C] > U+010C   c Č
+dk(1) + [K_S] > U+0161         c š
+dk(1) + [SHIFT K_S] > U+0160   c Š
+dk(1) + [K_Y] > U+017E         c ž  (physical Y = z in QWERTZ)
+dk(1) + [SHIFT K_Y] > U+017D   c Ž
+dk(1) + [K_D] > U+010F         c ď
+dk(1) + [SHIFT K_D] > U+010E   c Ď
+dk(1) + [K_T] > U+0165         c ť
+dk(1) + [SHIFT K_T] > U+0164   c Ť
+dk(1) + [K_SPACE] > '`'        c literal backtick
+
+c ================================================================
+c  DEAD ACUTE (´) — equals key
+c  For: á é ý í ó ú + ś ź ć ń ŕ
+c ================================================================
++ [K_EQUAL] > dk(2)
+
+c Vowels (stress marks)
+dk(2) + [K_A] > U+00E1         c á
+dk(2) + [SHIFT K_A] > U+00C1   c Á
+dk(2) + [K_E] > U+00E9         c é
+dk(2) + [SHIFT K_E] > U+00C9   c É
+dk(2) + [K_Z] > U+00FD         c ý  (physical Z = y in QWERTZ)
+dk(2) + [SHIFT K_Z] > U+00DD   c Ý
+dk(2) + [K_I] > U+00ED         c í
+dk(2) + [SHIFT K_I] > U+00CD   c Í
+dk(2) + [RALT K_I] > U+1E2F         c ḯ (stressed ï)
+dk(2) + [RALT SHIFT K_I] > U+1E2E   c Ḯ (stressed Ï)
+dk(2) + [K_O] > U+00F3         c ó
+dk(2) + [SHIFT K_O] > U+00D3   c Ó
+dk(2) + [K_U] > U+00FA         c ú
+dk(2) + [SHIFT K_U] > U+00DA   c Ú
+
+c Soft consonants
+dk(2) + [K_S] > U+015B         c ś
+dk(2) + [SHIFT K_S] > U+015A   c Ś
+dk(2) + [K_Y] > U+017A         c ź  (physical Y = z in QWERTZ)
+dk(2) + [SHIFT K_Y] > U+0179   c Ź
+dk(2) + [K_C] > U+0107         c ć
+dk(2) + [SHIFT K_C] > U+0106   c Ć
+dk(2) + [K_N] > U+0144         c ń
+dk(2) + [SHIFT K_N] > U+0143   c Ń
+dk(2) + [K_R] > U+0155         c ŕ
+dk(2) + [SHIFT K_R] > U+0154   c Ŕ
+dk(2) + [K_SPACE] > '='        c literal equals
+
+c ================================================================
+c  AltGr — direct access to non-composable characters
+c ================================================================
++ [RALT K_L] > U+0142          c ł
++ [RALT SHIFT K_L] > U+0141    c Ł
++ [RALT K_I] > U+00EF          c ï
++ [RALT SHIFT K_I] > U+00CF    c Ï
++ [RALT K_B] > U+012D          c ĭ
++ [RALT SHIFT K_B] > U+012C    c Ĭ
+
+c Common symbols on AltGr
++ [RALT K_E] > U+20AC          c €
++ [RALT K_W] > '|'
++ [RALT K_Q] > '~'
++ [RALT K_7] > '{'
++ [RALT K_8] > '['
++ [RALT K_9] > ']'
++ [RALT K_0] > '}'
++ [RALT K_HYPHEN] > '\'
++ [RALT K_BKQUOTE] > '`'       c literal backtick via AltGr
++ [RALT K_EQUAL] > '='         c literal equals via AltGr
++ [RALT K_COMMA] > '<'
++ [RALT K_PERIOD] > '>'
+
+c ================================================================
+c  Shift+backtick = ~ (standard)
+c ================================================================
++ [SHIFT K_BKQUOTE] > '~'
+
+c ================================================================
+c  Shift+equals = + (standard)
+c ================================================================
++ [SHIFT K_EQUAL] > '+'

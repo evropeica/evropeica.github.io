@@ -1,10 +1,12 @@
 ---
+import { withBase } from '../lib/url';
+
 interface Props {
   title: string;
   description?: string;
 }
 
-const { title, description = 'Evropeїca — Ukrainian Latin orthography project' } = Astro.props;
+const { title, description = 'Evropéïća — Ukrainian Latin orthography project' } = Astro.props;
 ---
 
 <!doctype html>
@@ -13,24 +15,25 @@ const { title, description = 'Evropeїca — Ukrainian Latin orthography project
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <title>{title} | Evropeїca</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title} | Evropéïća</title>
+    <link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />
   </head>
   <body>
     <nav class="nav">
-      <a href="/" class="nav-brand">Evropeїca</a>
+      <a href={withBase('/')} class="nav-brand">Evropéïća</a>
       <div class="nav-links">
-        <a href="/spec/">Spec</a>
-        <a href="/spec/layer-1/">Layer 1.0</a>
-        <a href="/spec/layer-2/">Layer 2.0</a>
-        <a href="/converter/">Converter</a>
+        <a href={withBase('/spec/')}>Spec</a>
+        <a href={withBase('/spec/v1/')}>v1.0</a>
+        <a href={withBase('/spec/v2/')}>v2.0</a>
+        <a href={withBase('/converter/')}>Converter</a>
+        <a href={withBase('/keyboard/')}>Keyboard</a>
       </div>
     </nav>
     <main>
       <slot />
     </main>
     <footer>
-      <p>&copy; 2026 Evropeїca Project</p>
+      <p>&copy; 2026 Evropéïća Project</p>
     </footer>
   </body>
 </html>
@@ -43,8 +46,8 @@ const { title, description = 'Evropeїca — Ukrainian Latin orthography project
     --color-accent: #2563eb;
     --color-border: #e7e5e4;
     --max-width: 52rem;
-    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+    --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', sans-serif;
+    --font-mono: ui-monospace, 'Cascadia Code', Consolas, monospace;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }

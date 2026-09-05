@@ -1,0 +1,303 @@
+---
+import Base from '../layouts/Base.astro';
+import { withBase } from '../lib/url';
+
+const layers = {
+  base: {
+    label: 'Base',
+    rows: [
+      ['ˇ←', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '´←'],
+      ['q', 'w', 'e', 'r', 't', 'z', 'u', 'i', 'o', 'p', '[', ']'],
+      ['a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', "'"],
+      ['y', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/'],
+    ]
+  },
+  shift: {
+    label: 'Shift',
+    rows: [
+      ['~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+'],
+      ['Q', 'W', 'E', 'R', 'T', 'Z', 'U', 'I', 'O', 'P', '{', '}'],
+      ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ':', '"'],
+      ['Y', 'X', 'C', 'V', 'B', 'N', 'M', '<', '>', '?'],
+    ]
+  },
+  altgr: {
+    label: 'AltGr',
+    rows: [
+      ['`', '', '', '', '', '', '', '{', '[', ']', '}', '\\', '='],
+      ['~', '|', '€', '', '', '', '', 'ï', '', '', '', ''],
+      ['', '', '', '', '', '', '', '', 'ł', '', ''],
+      ['', '', '', '', 'ĭ', '', '', '<', '>', ''],
+    ]
+  },
+  caron: {
+    label: 'ˇ + key',
+    rows: [
+      ['', '', '', '', '', '', '', '', '', '', '', '', ''],
+      ['', '', '', '', 'ť', 'ž', '', '', '', '', '', ''],
+      ['', 'š', 'ď', '', '', '', '', '', '', '', ''],
+      ['', '', 'č', '', '', '', '', '', '', ''],
+    ]
+  },
+  acute: {
+    label: '´ + key',
+    rows: [
+      ['', '', '', '', '', '', '', '', '', '', '', '', ''],
+      ['', '', 'é', 'ŕ', '', 'ź', 'ú', 'í', 'ó', '', '', ''],
+      ['á', 'ś', '', '', '', '', '', '', '', '', ''],
+      ['ý', '', 'ć', '', '', 'ń', '', '', '', ''],
+    ]
+  }
+};
+---
+
+<Base title="Kłaviatúra" description="Evropéïća keyboard layout reference">
+  <h1>Kłaviatúra / Клавіатура</h1>
+
+  <p>QWERTZ kłaviatúra z dvomá dead keys dla komponuváńńa diakrytýčnych liter (jak u nimećkych/francúźkych kłaviatúrach).</p>
+  <p class="cyr">QWERTZ клавіатура з двома dead keys для компонування діакритичних літер (як у німецьких/французьких клавіатурах).</p>
+
+  <div class="layer-tabs">
+    <button class="tab active" data-layer="base">Base</button>
+    <button class="tab" data-layer="shift">Shift</button>
+    <button class="tab" data-layer="altgr">AltGr</button>
+    <button class="tab" data-layer="caron">ˇ dead</button>
+    <button class="tab" data-layer="acute">´ dead</button>
+  </div>
+
+  {Object.entries(layers).map(([id, layer]) => (
+    <div class={`keyboard ${id === 'base' ? 'active' : ''}`} data-keyboard={id}>
+      {layer.rows.map((row, ri) => (
+        <div class={`row row-${ri}`}>
+          {row.map((key) => (
+            <div class={`key ${key === '' ? 'empty' : ''} ${key.endsWith('←') ? 'dead' : ''} ${key.length > 1 && !key.endsWith('←') ? 'small' : ''}`}>
+              {key.replace('←', '')}
+              {key.endsWith('←') && <span class="dead-label">dead</span>}
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  ))}
+
+  <h2>Pryncyp / Принцип</h2>
+
+  <div class="bilingual">
+    <div>
+      <div class="label">Łatynka</div>
+      <p>Standártnyj čysłovýj ŕad (cyfry bez Shift). Diakrytýčni litery stvóŕujuťśa čerez dvi dead keys — jak u nimećkij abo francúźkij rozkłádci:</p>
+
+      <h3>Dead caron ˇ (kłaviša <code>`</code>)</h3>
+      <p>Natýsnuty <code>`</code>, potim bazovu literu:</p>
+      <table class="compact">
+        <tr><td><code>`</code> + c</td><td>→ č</td><td><code>`</code> + s</td><td>→ š</td></tr>
+        <tr><td><code>`</code> + z</td><td>→ ž</td><td><code>`</code> + d</td><td>→ ď</td></tr>
+        <tr><td><code>`</code> + t</td><td>→ ť</td><td></td><td></td></tr>
+      </table>
+
+      <h3>Dead acute ´ (kłaviša <code>=</code>)</h3>
+      <p>Natýsnuty <code>=</code>, potim bazovu literu:</p>
+      <table class="compact">
+        <tr><th colspan="4">Nahołos (hołosní)</th></tr>
+        <tr><td><code>=</code> + a → á</td><td><code>=</code> + e → é</td><td><code>=</code> + y → ý</td><td></td></tr>
+        <tr><td><code>=</code> + i → í</td><td><code>=</code> + o → ó</td><td><code>=</code> + u → ú</td><td></td></tr>
+        <tr><td colspan="2"><code>=</code> + AltGr + i → ḯ</td><td colspan="2"></td></tr>
+        <tr><th colspan="4">Mjakí pryhołosní</th></tr>
+        <tr><td><code>=</code> + s → ś</td><td><code>=</code> + z → ź</td><td><code>=</code> + c → ć</td><td></td></tr>
+        <tr><td><code>=</code> + n → ń</td><td><code>=</code> + r → ŕ</td><td></td><td></td></tr>
+      </table>
+
+      <h3>AltGr (pravyj Alt)</h3>
+      <table class="compact">
+        <tr><td>AltGr + L → ł</td><td>AltGr + I → ï</td><td>AltGr + B → ĭ</td></tr>
+      </table>
+    </div>
+    <div>
+      <div class="label">Кирилиця</div>
+      <p>Стандартний числовий ряд (цифри без Shift). Діакритичні літери створюються через дві dead keys — як у німецькій або французькій розкладці:</p>
+
+      <h3>Dead caron ˇ (клавіша <code>`</code>)</h3>
+      <p>Натиснути <code>`</code>, потім базову літеру:</p>
+      <table class="compact">
+        <tr><td><code>`</code> + c</td><td>→ č (ч)</td><td><code>`</code> + s</td><td>→ š (ш)</td></tr>
+        <tr><td><code>`</code> + z</td><td>→ ž (ж)</td><td><code>`</code> + d</td><td>→ ď (дь)</td></tr>
+        <tr><td><code>`</code> + t</td><td>→ ť (ть)</td><td></td><td></td></tr>
+      </table>
+
+      <h3>Dead acute ´ (клавіша <code>=</code>)</h3>
+      <p>Натиснути <code>=</code>, потім базову літеру:</p>
+      <table class="compact">
+        <tr><th colspan="4">Наголос (голосні)</th></tr>
+        <tr><td><code>=</code> + a → á</td><td><code>=</code> + e → é</td><td><code>=</code> + y → ý</td><td></td></tr>
+        <tr><td><code>=</code> + i → í</td><td><code>=</code> + o → ó</td><td><code>=</code> + u → ú</td><td></td></tr>
+        <tr><td colspan="2"><code>=</code> + AltGr + i → ḯ (ї́)</td><td colspan="2"></td></tr>
+        <tr><th colspan="4">М'які приголосні</th></tr>
+        <tr><td><code>=</code> + s → ś (сь)</td><td><code>=</code> + z → ź (зь)</td><td><code>=</code> + c → ć (ць)</td><td></td></tr>
+        <tr><td><code>=</code> + n → ń (нь)</td><td><code>=</code> + r → ŕ (рь)</td><td></td><td></td></tr>
+      </table>
+
+      <h3>AltGr (правий Alt)</h3>
+      <table class="compact">
+        <tr><td>AltGr + L → ł (л)</td><td>AltGr + I → ï (ї)</td><td>AltGr + B → ĭ (ь)</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h2>Instalácija / Інсталяція</h2>
+
+  <div class="bilingual">
+    <div>
+      <div class="label">Łatynka</div>
+      <h3>Keyman (vsi płatfórmy)</h3>
+      <p>Najprostíše rišeńńa — Keyman vid SIL International. Odná kłaviatúra dla Windows, macOS, Linux, iOS ta Android.</p>
+      <ol>
+        <li>Vstanovýty <a href="https://keyman.com">Keyman</a></li>
+        <li>Dodáty kłaviatúru Evropéïća (<a href={withBase('/keyboards/evropeica.kmx')}>zavantážyty .kmx</a>)</li>
+      </ol>
+
+      <h3>Windows</h3>
+      <p>MSKLC abo KbdEdit — stvorýty na bazi US QWERTY, pomińáty Y/Z (QWERTZ), dodáty dead keys ta AltGr šar.</p>
+
+      <h3>macOS</h3>
+      <p>Ukelele — stvorýty .keylayout fajł z dead key stanamy.</p>
+
+      <h3>Linux</h3>
+      <p>XKB symbols fajł v <code>~/.config/xkb/symbols/</code>.</p>
+
+      <h3>iOS / Android</h3>
+      <p>Keyman — jedýnyj praktýčnyj šlach.</p>
+    </div>
+    <div>
+      <div class="label">Кирилиця</div>
+      <h3>Keyman (всі платформи)</h3>
+      <p>Найпростіше рішення — Keyman від SIL International. Одна клавіатура для Windows, macOS, Linux, iOS та Android.</p>
+      <ol>
+        <li>Встановити <a href="https://keyman.com">Keyman</a></li>
+        <li>Додати клавіатуру Evropéïća (<a href={withBase('/keyboards/evropeica.kmx')}>завантажити .kmx</a>)</li>
+      </ol>
+
+      <h3>Windows</h3>
+      <p>MSKLC або KbdEdit — створити на базі US QWERTY, поміняти Y/Z (QWERTZ), додати dead keys та AltGr шар.</p>
+
+      <h3>macOS</h3>
+      <p>Ukelele — створити .keylayout файл з dead key станами.</p>
+
+      <h3>Linux</h3>
+      <p>XKB symbols файл в <code>~/.config/xkb/symbols/</code>.</p>
+
+      <h3>iOS / Android</h3>
+      <p>Keyman — єдиний практичний шлях.</p>
+    </div>
+  </div>
+</Base>
+
+<script>
+  document.querySelectorAll('.tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.keyboard').forEach(k => k.classList.remove('active'));
+      tab.classList.add('active');
+      const layer = tab.dataset.layer;
+      document.querySelector(`[data-keyboard="${layer}"]`)?.classList.add('active');
+    });
+  });
+</script>
+
+<style>
+  .cyr { color: var(--color-muted); font-style: italic; }
+  ul, ol { padding-left: 1.5rem; margin-bottom: 1rem; }
+  li { margin-bottom: 0.3rem; }
+  h3 { margin-top: 1.5rem; }
+
+  .layer-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin: 1.5rem 0 1rem;
+  }
+
+  .tab {
+    padding: 0.4rem 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    background: white;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.15s;
+  }
+
+  .tab:hover { border-color: var(--color-accent); }
+  .tab.active {
+    background: var(--color-accent);
+    color: white;
+    border-color: var(--color-accent);
+  }
+
+  .keyboard { display: none; margin-bottom: 2rem; }
+  .keyboard.active { display: block; }
+
+  .row {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 4px;
+    justify-content: center;
+  }
+
+  .row-0 .key { min-width: 3.2rem; }
+  .row-1 .key { min-width: 3.4rem; }
+  .row-2 .key { min-width: 3.5rem; }
+  .row-3 .key { min-width: 3.6rem; }
+
+  .key {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 3rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: linear-gradient(to bottom, #fafafa, #e8e8e8);
+    font-size: 1.1rem;
+    font-weight: 500;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    position: relative;
+  }
+
+  .key.empty {
+    background: #f5f5f5;
+    border-color: #e0e0e0;
+    color: #ccc;
+  }
+
+  .key.dead {
+    background: linear-gradient(to bottom, #fef3c7, #fde68a);
+    border-color: #f59e0b;
+    color: #92400e;
+  }
+
+  .key.small { font-size: 0.8rem; }
+
+  .dead-label {
+    font-size: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #b45309;
+    position: absolute;
+    bottom: 2px;
+  }
+
+  table.compact {
+    font-size: 0.9rem;
+    margin: 0.5rem 0 1rem;
+  }
+  table.compact td, table.compact th {
+    padding: 0.3rem 0.6rem;
+  }
+
+  @media (max-width: 768px) {
+    .row-0 .key,
+    .row-1 .key,
+    .row-2 .key,
+    .row-3 .key { min-width: 2rem; font-size: 0.8rem; height: 2.4rem; }
+  }
+</style>

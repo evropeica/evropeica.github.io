@@ -1,59 +1,66 @@
 ---
 import Base from '../layouts/Base.astro';
+import { withBase } from '../lib/url';
 ---
 
-<Base title="Hołovna" description="Evropeїca — Ukrainian Latin transliteration and orthography project">
-  <h1>Evropeїca</h1>
+<Base title="Hołovná" description="Evropéïća — Ukrainian Latin transliteration and orthography project">
+  <h1>Evropéïća</h1>
 
   <div class="bilingual">
     <div>
-      <div class="label">Латинка</div>
-      <p>Evropeїca — ce proekt łatynskoї orfohrafiї dła ukraїnskoї movy, ščo proponuje bahatorivnevu systemu transliteraciї ta pravopysu.</p>
+      <div class="label">Łatynka</div>
+      <p>Evropéïća — ce projékt łatýnśkoï ortográfiï dla ukraḯnśkoï movy, ščo proponúje bahatorívnevu systému transliteráciï ta pravopýsu.</p>
     </div>
     <div>
       <div class="label">Кирилиця</div>
-      <p>Європеїця — це проект латинської орфографії для української мови, що пропонує багаторівневу систему транслітерації та правопису.</p>
+      <p>Європеїця — це проєкт латинської орфографії для української мови, що пропонує багаторівневу систему транслітерації та правопису.</p>
     </div>
   </div>
 
-  <h2>Rivni / Рівні</h2>
+  <h2>Versiï / Версії</h2>
 
-  <div class="layers">
-    <div class="layer">
-      <h3><a href="/spec/layer-1/">Layer 1.0</a> — Transliteracija / Транслітерація</h3>
-      <p>Čysta transliteracija 1:1 z kyryłyci suačsnoї ukraїnskoї movy na osnovi pravopysu 2019 roku.</p>
+  <div class="versions">
+    <div class="version">
+      <h3><a href={withBase('/spec/v1/')}>v1.0</a> — Transliterácija / Транслітерація</h3>
+      <p>Čysta transliterácija 1:1 z kyrýłyci sučásnoï ukraḯnśkoï movy na osnóvi pravopýsu 2019 roku.</p>
       <p class="cyr">Чиста транслітерація 1:1 з кирилиці сучасної української мови на основі правопису 2019 року.</p>
     </div>
 
-    <div class="layer">
-      <h3><a href="/spec/layer-2/">Layer 2.0</a> — Orfohrafija / Орфографія</h3>
-      <p>Zastosuvanńa orfohrafičnych praviw, de inozemni słova zberigajuť oryhinalnu vymovu: geografia zamisť heohrafija, mitologia zamisť mifolohija.</p>
-      <p class="cyr">Застосування орфографічних правил, де іноземні слова зберігають оригінальну вимову: geografija замість heohrafija, mitologia замість mifolohija.</p>
+    <div class="version">
+      <h3><a href={withBase('/spec/v2/')}>v2.0</a> — Ortográfija / Орфографія</h3>
+      <p>Zastosuváńńa ortografíčnych pravył, de inozémni słová zberihájuť oryhinálnu vymóvu.</p>
+      <p class="cyr">Застосування орфографічних правил, де іноземні слова зберігають оригінальну вимову.</p>
+      <table class="compact">
+        <thead><tr><th>Кирилиця</th><th>v1.0</th><th>v2.0</th></tr></thead>
+        <tbody>
+          <tr><td>географія</td><td>heohráfija</td><td><strong>geográfija</strong></td></tr>
+          <tr><td>міфологія</td><td>mifołóhija</td><td><strong>mitológija</strong></td></tr>
+        </tbody>
+      </table>
     </div>
 
-    <div class="layer">
-      <h3>Layer 3.0 — <em>v rozrobci / в розробці</em></h3>
-      <p>Majbutńe rozšyrenńa systemy. Detalі buduť vyznačeni pisla stabilizaciї rivniv 1.0 ta 2.0.</p>
-      <p class="cyr">Майбутнє розширення системи. Деталі будуть визначені після стабілізації рівнів 1.0 та 2.0.</p>
+    <div class="version">
+      <h3>v3.0 — <em>v rozróbci / в розробці</em></h3>
+      <p>Majbútńe rozšýreńńa systémy. Detáli buduť vyznačeni pisla stabilizáciï versij 1.0 ta 2.0.</p>
+      <p class="cyr">Майбутнє розширення системи. Деталі будуть визначені після стабілізації версій 1.0 та 2.0.</p>
     </div>
   </div>
 
-  <h2>Sprubuj / Спробуй</h2>
+  <h2>Sprobuj / Спробуй</h2>
   <p>
-    <a href="/converter/" class="cta">Vidkryty konverter &rarr;</a>
-    / <a href="/converter/" class="cta">Відкрити конвертер &rarr;</a>
+    <a href={withBase('/converter/')} class="cta">Vidkrýty konvérter &rarr;</a>
+    / <a href={withBase('/converter/')} class="cta">Відкрити конвертер &rarr;</a>
   </p>
 
   <h2>Pryncypy / Принципи</h2>
 
   <div class="bilingual">
     <div>
-      <div class="label">Латинка</div>
+      <div class="label">Łatynka</div>
       <ul>
-        <li>Vidpovidaty tradyciї movlenńa</li>
-        <li>Buty intuїtyvno zrozumiloju</li>
-        <li>Buty zručnoju dła napysanńa</li>
-        <li>Minimizuvaty diakrytyku</li>
+        <li>Vidpovidáty tradýciï movłeńńa</li>
+        <li>Buty intuïtývno zrozumíłoju</li>
+        <li>Buty zručnoju dla napysáńńa</li>
       </ul>
     </div>
     <div>
@@ -62,33 +69,34 @@ import Base from '../layouts/Base.astro';
         <li>Відповідати традиції мовлення</li>
         <li>Бути інтуїтивно зрозумілою</li>
         <li>Бути зручною для написання</li>
-        <li>Мінімізувати діакритику</li>
       </ul>
     </div>
   </div>
 </Base>
 
 <style>
-  .layers {
+  .versions {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
     margin: 1rem 0;
   }
 
-  .layer {
+  .version {
     border: 1px solid var(--color-border);
     border-radius: 8px;
     padding: 1.25rem;
   }
 
-  .layer h3 { margin-top: 0; }
+  .version h3 { margin-top: 0; }
 
   .cyr {
     color: var(--color-muted);
     font-size: 0.9rem;
     font-style: italic;
   }
+
+  .compact { width: auto; margin: 0.5rem 0 0; font-size: 0.9rem; }
 
   .cta {
     font-weight: 600;

@@ -1,19 +1,23 @@
 ---
 import Base from '../../layouts/Base.astro';
+import { withBase } from '../../lib/url';
 ---
 
-<Base title="Specyfikacija">
-  <h1>Specyfikacija / Специфікація</h1>
+<Base title="Specyfikácija">
+  <h1>Specyfikácija / Специфікація</h1>
 
-  <p>Evropeїca proponuje bahatorivnevu systemu, de kožnyj riveń dodaje praviła ponad poperednij.</p>
-  <p class="cyr">Європеїця пропонує багаторівневу систему, де кожний рівень додає правила понад попередній.</p>
+  <p>Evropéïća proponúje bahatorívnevu systému versij, de kožna versija dodajé pravyła ponád poperédńu.</p>
+  <p class="cyr">Європеїця пропонує багаторівневу систему версій, де кожна версія додає правила понад попередню.</p>
 
-  <h2>Rivni / Рівні</h2>
+  <p>Póvnyj zvid pravył dla ludéj i prohrám — <a href="https://github.com/akrivonos/evropeica/blob/master/docs/RULEBOOK.md">RULEBOOK.md</a>.</p>
+  <p class="cyr">Повний звід правил для людей і програм — <a href="https://github.com/akrivonos/evropeica/blob/master/docs/RULEBOOK.md">RULEBOOK.md</a>.</p>
+
+  <h2>Versiï / Версії</h2>
 
   <table>
     <thead>
       <tr>
-        <th>Riveń</th>
+        <th>Versija</th>
         <th>Nazva</th>
         <th>Opys</th>
       </tr>
@@ -21,75 +25,85 @@ import Base from '../../layouts/Base.astro';
     <tbody>
       <tr>
         <td><strong>1.0</strong></td>
-        <td><a href="/spec/layer-1/">Transliteracija</a></td>
-        <td>Čysta transliteracija 1:1 z kyryłyci. Kožna kyrylyčna litera maje rivno odyn łatynskyj vidpovidnyk.</td>
+        <td><a href={withBase('/spec/v1/')}>Transliterácija</a></td>
+        <td>Čysta transliterácija 1:1 z kyrýłyci. Kožna kyryłýčna litera maje rivno odýn łatýnśkyj vidpovídnyk.</td>
       </tr>
       <tr>
         <td><strong>1.x</strong></td>
-        <td>Rozšyrenńa</td>
-        <td>Pidtrymka dialektiv, staroukraїnskoї movy ta inšych variantiv.</td>
+        <td>Rozšýreńńa</td>
+        <td>Pidtrýmka diałéktiv, staroukraḯnśkoï movy ta inšych variántiv.</td>
       </tr>
       <tr>
         <td><strong>2.0</strong></td>
-        <td><a href="/spec/layer-2/">Orfohrafija</a></td>
-        <td>Orfohrafični pravyła dła słiv inozemnoho pochodženńa: zberezenia oryhinalnoї vymovy.</td>
+        <td><a href={withBase('/spec/v2/')}>Ortográfija</a></td>
+        <td>Ortografíčni pravyła dla sliv inozémnoho pochódžeńńa: zberežéńńa oryhinálnoï vymóvy.</td>
+      </tr>
+      <tr>
+        <td><strong>2.1</strong></td>
+        <td><a href={withBase('/spec/v2/#v21')}>Nahołos</a></td>
+        <td>Poznáčeńńa nahołosu hostrym znakom (á, é, ý…), kołý vin ne na peršij korenevíj hołosníj.</td>
       </tr>
       <tr>
         <td><strong>3.0</strong></td>
-        <td><em>V rozrobci</em></td>
-        <td>Majbutni rozšyrenńa systemy.</td>
+        <td><em>V rozróbci</em></td>
+        <td>Majbútni rozšýreńńa systémy.</td>
       </tr>
     </tbody>
   </table>
 
-  <h2>Pryncypy pobudovy / Принципи побудови</h2>
+  <h2>Nazva / Назва</h2>
 
-  <h3>Hrupy łyter / Групи літер</h3>
+  <p>Evropéïća — ce nazva u formi v2.0 (§4, eu → ev). U čystij transliteráciï v1.0 ce bułó b Jevropeïća.</p>
+  <p class="cyr">Evropéïća — це назва у формі v2.0 (§4, eu → ev). У чистій транслітерації v1.0 це було б Jevropeïća.</p>
+
+  <h2>Pryncypy pobudóvy / Принципи побудови</h2>
+
+  <h3>Hrupy liter / Групи літер</h3>
 
   <div class="bilingual">
     <div>
-      <div class="label">Латинка</div>
+      <div class="label">Łatynka</div>
       <ul>
-        <li><span class="dot green"></span> <strong>Zełena hrupa</strong> — zvuky, łatynskyj vidpovidnyk jakych zrozumilyj bez pojasnenja</li>
-        <li><span class="dot yellow"></span> <strong>Žovta hrupa</strong> — zvuky z kilkoma možłyvymy šlachamy peredači</li>
-        <li><span class="dot red"></span> <strong>Červona hrupa</strong> — zvuky z diakrytykoju (Č, Š, Ž, Ď, Ť...)</li>
-        <li><span class="dot purple"></span> <strong>Purpurna hrupa</strong> — dialektyčni ta archaїčni litery</li>
-        <li><span class="dot grey"></span> <strong>Sira hrupa</strong> — inšomovni łatynskyj litery (Q, X, W)</li>
+        <li><span class="dot green"></span> <strong>Zełéna hrupa</strong> — zvuky, łatýnśkyj vidpovídnyk jakých zrozumíłyj bez pojásneńńa: a b v d e z i k m n o p r s t u f</li>
+        <li><span class="dot yellow"></span> <strong>Žovta hrupa</strong> — zvuky z kilkomá možłývymy šlachámy peredáči: h g y j ch c ł/l ï ja/ju/je</li>
+        <li><span class="dot red"></span> <strong>Červóna hrupa</strong> — litery z diakrýtykoju: č š ž šč ď ť ź ś ć ń ŕ ł ï ĭ</li>
+        <li><span class="dot purple"></span> <strong>Purpúrna hrupa</strong> — diałektýčni ta archaḯčni litery (ы ё ъ э), zarezervóvani dla v1.x</li>
+        <li><span class="dot grey"></span> <strong>Sira hrupa</strong> — inšomóvni łatýnśki litery (q, x, w) łyšé u vłásnych nazvach</li>
       </ul>
     </div>
     <div>
       <div class="label">Кирилиця</div>
       <ul>
-        <li><span class="dot green"></span> <strong>Зелена група</strong> — звуки, латинський відповідник яких зрозумілий без пояснення</li>
-        <li><span class="dot yellow"></span> <strong>Жовта група</strong> — звуки з кількома можливими шляхами передачі</li>
-        <li><span class="dot red"></span> <strong>Червона група</strong> — звуки з діакритикою (Č, Š, Ž, Ď, Ť...)</li>
-        <li><span class="dot purple"></span> <strong>Пурпурна група</strong> — діалектичні та архаїчні літери</li>
-        <li><span class="dot grey"></span> <strong>Сіра група</strong> — іншомовні латинські літери (Q, X, W)</li>
+        <li><span class="dot green"></span> <strong>Зелена група</strong> — звуки, латинський відповідник яких зрозумілий без пояснення: a b v d e z i k m n o p r s t u f</li>
+        <li><span class="dot yellow"></span> <strong>Жовта група</strong> — звуки з кількома можливими шляхами передачі: h g y j ch c ł/l ï ja/ju/je</li>
+        <li><span class="dot red"></span> <strong>Червона група</strong> — літери з діакритикою: č š ž šč ď ť ź ś ć ń ŕ ł ï ĭ</li>
+        <li><span class="dot purple"></span> <strong>Пурпурна група</strong> — діалектичні та архаїчні літери (ы ё ъ э), зарезервовані для v1.x</li>
+        <li><span class="dot grey"></span> <strong>Сіра група</strong> — іншомовні латинські літери (q, x, w) лише у власних назвах</li>
       </ul>
     </div>
   </div>
 
-  <h3>Perevaha diakrytyky / Перевага діакритики</h3>
+  <h3>Perevaha diakrýtyky / Перевага діакритики</h3>
 
   <div class="bilingual">
     <div>
-      <div class="label">Латинка</div>
-      <p>Abetka vykorystovuje litery z diakrytykoju (Č, Š, Ž) zamisť dyhrafiv (CH, SH, ZH), ščo skoročuje napysanńa słiv:</p>
+      <div class="label">Łatynka</div>
+      <p>Abétka vykorystóvuje litery z diakrýtykoju (Č, Š, Ž) zamisť dyhráfiv (CH, SH, ZH), ščo skoróčuje napysáńńa sliv:</p>
       <ul>
-        <li>Що — Shcho — <strong>Ščo</strong></li>
-        <li>Якщо — Yakshcho — <strong>Jakščo</strong></li>
-        <li>Житомир — Zhytomyr — <strong>Žytomyr</strong></li>
-        <li>Чернівці — Chernivtsi — <strong>Černivci</strong></li>
+        <li><strong>Ščo</strong> (ne Shcho)</li>
+        <li><strong>Jakščo</strong> (ne Yakshcho)</li>
+        <li><strong>Žytomyr</strong> (ne Zhytomyr)</li>
+        <li><strong>Černivci</strong> (ne Chernivtsi)</li>
       </ul>
     </div>
     <div>
       <div class="label">Кирилиця</div>
       <p>Абетка використовує літери з діакритикою (Č, Š, Ž) замість диграфів (CH, SH, ZH), що скорочує написання слів:</p>
       <ul>
-        <li>Що — Shcho — <strong>Ščo</strong></li>
-        <li>Якщо — Yakshcho — <strong>Jakščo</strong></li>
-        <li>Житомир — Zhytomyr — <strong>Žytomyr</strong></li>
-        <li>Чернівці — Chernivtsi — <strong>Černivci</strong></li>
+        <li><strong>Що</strong> (не Shcho)</li>
+        <li><strong>Якщо</strong> (не Yakshcho)</li>
+        <li><strong>Житомир</strong> (не Zhytomyr)</li>
+        <li><strong>Чернівці</strong> (не Chernivtsi)</li>
       </ul>
     </div>
   </div>
