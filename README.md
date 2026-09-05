@@ -83,7 +83,7 @@ public/keyboards/         compiled .kmx, served from the site
 
 ## Running it
 
-Requires Node ≥ 22.6 (the tests import TypeScript directly) and Python ≥ 3.12.
+Requires Node ≥ 22.18 (Astro 7, and the tests import TypeScript directly) and Python ≥ 3.12.
 
 ```bash
 npm install

@@ -10,10 +10,10 @@
     "test": "node tests/run.mjs"
   },
   "dependencies": {
-    "astro": "^5.8.0"
+    "astro": "^7.3.1"
   },
   "engines": {
-    "node": ">=22.6"
+    "node": ">=22.18"
   },
   "devDependencies": {
     "@astrojs/sitemap": "^3.7.4"
