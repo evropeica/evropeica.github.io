@@ -14,3 +14,6 @@ __pycache__/
 
 # local scratch, drafts and superseded notes — never committed
 _local/
+
+# local editor/agent config
+.claude/

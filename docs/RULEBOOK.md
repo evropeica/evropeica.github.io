@@ -182,6 +182,7 @@ Words currently written in v2.0 on the site must appear in `data/v2-lexicon.json
 2. **ĭ**: with R5b in place the letter appears only in foreign/dialect words (R5c). Keep it in the alphabet or drop it and write j?
 3. **V2-§8 boundary**: which loanwords count as "foreign" for plain l (e.g. лампа, клас, план — Slavicised centuries ago)? Proposal: only Greek/Latin/Western learned vocabulary and modern borrowings; everyday old loans keep ł.
 4. **V2-§2**: the list of words that regain initial h is closed (harfa, historija, histerija, homonim, hijerohlif…); it needs a lexicon, not a rule.
+5. **ḯ is typographically weak (V21-4).** Stacking an acute over a diaeresis is rare in Latin typography and few text faces handle it well. Measured 2026-09-05: Source Serif 4 and PT Serif have no glyph for U+1E2F/U+1E2E at all; Literata, Charis SIL and Gentium Book Plus do, but even Literata collides the acute into the diaeresis, so at body size `Ukraḯna` reads as a smudge. Options: (a) keep it and accept the look, (b) leave stress unmarked on ї and note the exception, (c) mark stress on ї with a following modifier letter instead. The site currently keeps it, and avoids it in display-size text.
 
 ---
 

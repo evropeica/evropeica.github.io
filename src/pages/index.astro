@@ -1,55 +1,137 @@
 ---
 import Base from '../layouts/Base.astro';
 import { withBase } from '../lib/url';
+
+const specimen = ['Č', 'Š', 'Ž', 'Ł', 'Ď', 'Ť', 'Ź', 'Ś', 'Ć', 'Ń', 'Ŕ', 'Ï', 'Ḯ'];
+
+const alphabet = [
+  ['А', 'A'], ['Б', 'B'], ['В', 'V'], ['Г', 'H'], ['Ґ', 'G'], ['Д', 'D'],
+  ['Е', 'E'], ['Є', 'Je'], ['Ж', 'Ž'], ['З', 'Z'], ['И', 'Y'], ['І', 'I'],
+  ['Ї', 'Ï'], ['Й', 'J'], ['К', 'K'], ['Л', 'Ł'], ['М', 'M'], ['Н', 'N'],
+  ['О', 'O'], ['П', 'P'], ['Р', 'R'], ['С', 'S'], ['Т', 'T'], ['У', 'U'],
+  ['Ф', 'F'], ['Х', 'Ch'], ['Ц', 'C'], ['Ч', 'Č'], ['Ш', 'Š'], ['Щ', 'Šč'],
+  ['Ь', 'Ĭ'], ['Ю', 'Ju'], ['Я', 'Ja'],
+];
+
+const versions = [
+  {
+    id: 'v1.0', href: '/spec/v1/', name: 'Transliterácija', cyr: 'Транслітерація',
+    state: 'stabilna', tone: 'ready',
+    lat: 'Čysta transliterácija 1:1 z kyrýłyci sučásnoï ukraḯnśkoï movy na osnóvi pravopýsu 2019 roku.',
+    cyrText: 'Чиста транслітерація 1:1 з кирилиці сучасної української мови на основі правопису 2019 року.',
+  },
+  {
+    id: 'v2.0', href: '/spec/v2/', name: 'Ortográfija', cyr: 'Орфографія',
+    state: 'v robóti', tone: 'wip',
+    lat: 'Pravyła dla inozémnych sliv: oryhinálna vymóva zamisť kyryłýčnoho poserédnyctva.',
+    cyrText: 'Правила для іноземних слів: оригінальна вимова замість кириличного посередництва.',
+  },
+  {
+    id: 'v2.1', href: '/spec/v2/#v21', name: 'Nahołos', cyr: 'Наголос',
+    state: 'v robóti', tone: 'wip',
+    lat: 'Nahołos hostrym znakom, koły vin ne na peršij korenevij hołosnij.',
+    cyrText: 'Наголос гострим знаком, коли він не на першій кореневій голосній.',
+  },
+];
 ---
 
-<Base title="Hołovná" description="Evropéïća — Ukrainian Latin transliteration and orthography project">
-  <h1>Evropéïća</h1>
+<Base title="Hołovná" description="Evropéïća — Ukrainian Latin transliteration and orthography project" wide>
 
-  <div class="bilingual">
-    <div>
-      <div class="label">Łatynka</div>
-      <p>Evropéïća — ce projékt łatýnśkoï ortográfiï dla ukraḯnśkoï movy, ščo proponúje bahatorívnevu systému transliteráciï ta pravopýsu.</p>
+  <section class="hero">
+    <p class="eyebrow">Ukraïnśka łatynka · Українська латинка</p>
+    <h1 class="wordmark">Evropéïća</h1>
+
+    <p class="lede">Naša mova łatýnśkymy literamy — žyvá systéma pyśmá, a ne pasportna transliterácija.</p>
+    <p class="cyr lede-cyr">Наша мова латинськими літерами — жива система письма, а не паспортна транслітерація.</p>
+
+    <ul class="specimen" aria-label="Litery z diakrytykoju">
+      {specimen.map(ch => <li>{ch}</li>)}
+    </ul>
+
+    <p class="actions">
+      <a class="btn btn-primary" href={withBase('/converter/')}>Konverter &rarr;</a>
+      <a class="btn" href={withBase('/spec/')}>Specyfikacija</a>
+    </p>
+  </section>
+
+  <section class="demo" aria-labelledby="demo-h">
+    <h2 id="demo-h" class="demo-h">Sprobuj / Спробуй</h2>
+    <div class="demo-grid">
+      <div class="demo-panel">
+        <label class="demo-label" for="demo-in">Кирилиця</label>
+        <textarea id="demo-in" rows="3" spellcheck="false">Ще не вмерла України ні слава, ні воля</textarea>
+      </div>
+      <div class="demo-panel">
+        <span class="demo-label">Łatynka</span>
+        <output id="demo-out" for="demo-in"></output>
+      </div>
     </div>
-    <div>
-      <div class="label">Кирилиця</div>
-      <p>Європеїця — це проєкт латинської орфографії для української мови, що пропонує багаторівневу систему транслітерації та правопису.</p>
-    </div>
+  </section>
+
+  <h2>Čomu, ščo, jak / Чому, що, як</h2>
+
+  <div class="story">
+    <article class="story-card">
+      <h3 class="story-h"><span class="story-n">1</span> Čomu / Чому</h3>
+      <p>Jevropéjśka intehrácija, technołohíčna sumísnisť i vłasnyj informacíjnyj prostir.</p>
+      <p class="cyr">Європейська інтеграція, технологічна сумісність і власний інформаційний простір.</p>
+      <p>Łatýnka robyť ukraḯnśke słovo zrozumíłym susídam bez poserédnyka.</p>
+      <p class="cyr">Латинка робить українське слово зрозумілим сусідам без посередника.</p>
+    </article>
+
+    <article class="story-card">
+      <h3 class="story-h"><span class="story-n">2</span> Ščo / Що</h3>
+      <p>Druha systéma pyśmá, a ne zamína kyrýłyci.</p>
+      <p class="cyr">Друга система письма, а не заміна кирилиці.</p>
+      <p>Obýdvi abétky žyvúť poruč, jak u serbiv. Kyrýłyća nikúdy ne znykáje.</p>
+      <p class="cyr">Обидві абетки живуть поруч, як у сербів. Кирилиця нікуди не зникає.</p>
+    </article>
+
+    <article class="story-card">
+      <h3 class="story-h"><span class="story-n">3</span> Jak / Як</h3>
+      <p>Spočátku standárt, potim instruménty: pravyła, konvérter, rozkłádka kłaviatúry.</p>
+      <p class="cyr">Спочатку стандарт, потім інструменти: правила, конвертер, розкладка клавіатури.</p>
+      <p>Dali — škoła, vydavcí, vyvisky j dokuménty.</p>
+      <p class="cyr">Далі — школа, видавці, вивіски й документи.</p>
+    </article>
   </div>
 
   <h2>Versiï / Версії</h2>
 
   <div class="versions">
-    <div class="version">
-      <h3><a href={withBase('/spec/v1/')}>v1.0</a> — Transliterácija / Транслітерація</h3>
-      <p>Čysta transliterácija 1:1 z kyrýłyci sučásnoï ukraḯnśkoï movy na osnóvi pravopýsu 2019 roku.</p>
-      <p class="cyr">Чиста транслітерація 1:1 з кирилиці сучасної української мови на основі правопису 2019 року.</p>
-    </div>
-
-    <div class="version">
-      <h3><a href={withBase('/spec/v2/')}>v2.0</a> — Ortográfija / Орфографія</h3>
-      <p>Zastosuváńńa ortografíčnych pravył, de inozémni słová zberihájuť oryhinálnu vymóvu.</p>
-      <p class="cyr">Застосування орфографічних правил, де іноземні слова зберігають оригінальну вимову.</p>
-      <table class="compact">
-        <thead><tr><th>Кирилиця</th><th>v1.0</th><th>v2.0</th></tr></thead>
-        <tbody>
-          <tr><td>географія</td><td>heohráfija</td><td><strong>geográfija</strong></td></tr>
-          <tr><td>міфологія</td><td>mifołóhija</td><td><strong>mitológija</strong></td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="version">
-      <h3>v3.0 — <em>v rozróbci / в розробці</em></h3>
+    {versions.map(v => (
+      <article class="version">
+        <div class="version-top">
+          <a class="version-id" href={withBase(v.href)}>{v.id}</a>
+          <span class:list={['chip', v.tone]}>{v.state}</span>
+        </div>
+        <h3 class="version-name">{v.name} <span class="version-cyr">/ {v.cyr}</span></h3>
+        <p>{v.lat}</p>
+        <p class="cyr">{v.cyrText}</p>
+      </article>
+    ))}
+    <article class="version version-muted">
+      <div class="version-top">
+        <span class="version-id">v3.0</span>
+        <span class="chip idea">v rozróbci</span>
+      </div>
+      <h3 class="version-name">&mdash;</h3>
       <p>Majbútńe rozšýreńńa systémy. Detáli buduť vyznačeni pisla stabilizáciï versij 1.0 ta 2.0.</p>
       <p class="cyr">Майбутнє розширення системи. Деталі будуть визначені після стабілізації версій 1.0 та 2.0.</p>
-    </div>
+    </article>
   </div>
 
-  <h2>Sprobuj / Спробуй</h2>
-  <p>
-    <a href={withBase('/converter/')} class="cta">Vidkrýty konvérter &rarr;</a>
-    / <a href={withBase('/converter/')} class="cta">Відкрити конвертер &rarr;</a>
+  <h2>Abetka / Абетка</h2>
+
+  <ul class="alphabet" aria-label="Osnovna tabłyća">
+    {alphabet.map(([c, l]) => (
+      <li><span class="a-cyr">{c}</span><span class="a-lat">{l}</span></li>
+    ))}
+  </ul>
+
+  <p class="alphabet-note">
+    <a href={withBase('/spec/v1/')}>Povnyj zvid pravył &rarr;</a>
+    <span class="cyr">/ Повний звід правил</span>
   </p>
 
   <h2>Pryncypy / Принципи</h2>
@@ -74,35 +156,166 @@ import { withBase } from '../lib/url';
   </div>
 </Base>
 
+<script>
+  import { transliterate } from '../lib/transliterate';
+
+  const input = document.getElementById('demo-in') as HTMLTextAreaElement | null;
+  const out = document.getElementById('demo-out');
+  if (input && out) {
+    const sync = () => { out.textContent = transliterate(input.value); };
+    input.addEventListener('input', sync);
+    sync();
+  }
+</script>
+
 <style>
-  .versions {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    margin: 1rem 0;
+  /* ---------- hero ---------- */
+  .hero { padding-block: 1rem 2.5rem; border-bottom: 1px solid var(--rule); }
+
+  .eyebrow {
+    font-family: var(--font-ui);
+    font-size: .72rem; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--ink-faint); margin-bottom: 1rem;
   }
 
-  .version {
-    border: 1px solid var(--color-border);
-    border-radius: 8px;
-    padding: 1.25rem;
-  }
-
-  .version h3 { margin-top: 0; }
-
-  .cyr {
-    color: var(--color-muted);
-    font-size: 0.9rem;
-    font-style: italic;
-  }
-
-  .compact { width: auto; margin: 0.5rem 0 0; font-size: 0.9rem; }
-
-  .cta {
+  .wordmark {
+    font-size: clamp(3rem, 1.6rem + 6.5vw, 6rem);
+    line-height: 1;
+    letter-spacing: -.03em;
+    margin-bottom: 1.25rem;
     font-weight: 600;
-    font-size: 1.05rem;
   }
 
-  ul { padding-left: 1.5rem; margin-bottom: 0.5rem; }
-  li { margin-bottom: 0.3rem; }
+  .lede {
+    font-size: clamp(1.1rem, 1.02rem + .4vw, 1.35rem);
+    line-height: 1.55;
+    max-width: 34ch;
+    margin-bottom: .35rem;
+  }
+  .lede-cyr { max-width: 40ch; font-size: 1rem; margin-bottom: 1.75rem; }
+
+  .specimen {
+    list-style: none; padding: 0; margin: 0 0 1.75rem;
+    display: flex; flex-wrap: wrap; gap: .4rem;
+  }
+  .specimen li {
+    font-size: 1.45rem; line-height: 1.25;
+    padding: .45rem .68rem;
+    border: 1px solid var(--rule);
+    border-radius: 7px;
+    background: var(--paper-raised);
+    color: var(--ink-soft);
+    margin: 0;
+  }
+  .specimen li:nth-child(4n+1) { color: var(--accent); border-color: color-mix(in srgb, var(--accent) 35%, var(--rule)); }
+
+  .actions { display: flex; flex-wrap: wrap; gap: .6rem; margin: 0; }
+  .btn {
+    font-family: var(--font-ui); font-size: .9rem; font-weight: 500;
+    padding: .55rem 1.1rem; border-radius: 8px;
+    border: 1px solid var(--rule-strong);
+    color: var(--ink); text-decoration: none;
+    background: var(--paper-raised);
+  }
+  .btn:hover { border-color: var(--accent); color: var(--accent); }
+  .btn-primary {
+    background: var(--accent); border-color: var(--accent); color: var(--paper-raised);
+  }
+  .btn-primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); color: var(--paper-raised); }
+  @media (prefers-color-scheme: dark) {
+    .btn-primary, .btn-primary:hover { color: #10151a; }
+  }
+
+  /* ---------- live demo ---------- */
+  .demo { margin-top: 2.5rem; }
+  .demo-h { margin-top: 0; }
+  .demo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .demo-panel { display: flex; flex-direction: column; gap: .4rem; }
+  .demo-label {
+    font-family: var(--font-ui); font-size: .68rem; font-weight: 600;
+    letter-spacing: .09em; text-transform: uppercase; color: var(--ink-faint);
+  }
+  #demo-in, #demo-out {
+    font-family: var(--font-serif); font-size: 1.05rem; line-height: 1.6;
+    padding: .85rem 1rem; min-height: 6.5rem;
+    border: 1px solid var(--rule); border-radius: var(--radius);
+    background: var(--paper-raised); color: var(--ink);
+    width: 100%;
+  }
+  #demo-in { resize: vertical; }
+  #demo-in:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+  #demo-out { display: block; background: var(--paper-sunken); white-space: pre-wrap; }
+
+  /* ---------- why / what / how ---------- */
+  .story { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-bottom: 1rem; }
+  .story-card {
+    padding: 1.4rem 1.35rem;
+    border: 1px solid var(--rule); border-radius: var(--radius);
+    background: var(--paper-raised);
+    box-shadow: var(--shadow);
+  }
+  .story-h { margin-top: 0; display: flex; align-items: center; gap: .55rem; font-size: 1.1rem; }
+  .story-n {
+    display: grid; place-items: center;
+    width: 1.55rem; height: 1.55rem; flex: none;
+    border-radius: 50%;
+    background: var(--accent-soft); color: var(--accent);
+    font-family: var(--font-ui); font-size: .8rem; font-weight: 700;
+  }
+  .story-card p { font-size: .98rem; }
+  .story-card p:last-child { margin-bottom: 0; }
+  .story-card .cyr { font-size: .9rem; }
+
+  /* ---------- versions ---------- */
+  .versions { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
+  .version {
+    padding: 1.3rem 1.35rem;
+    border: 1px solid var(--rule); border-radius: var(--radius);
+    background: var(--paper-raised);
+  }
+  .version-muted { background: transparent; border-style: dashed; }
+  .version-top { display: flex; align-items: center; gap: .6rem; margin-bottom: .5rem; }
+  .version-id {
+    font-family: var(--font-ui); font-weight: 700; font-size: .95rem;
+    color: var(--accent); text-decoration: none;
+  }
+  .chip {
+    font-family: var(--font-ui); font-size: .66rem; font-weight: 600;
+    letter-spacing: .07em; text-transform: uppercase;
+    padding: .18rem .5rem; border-radius: 999px;
+  }
+  .chip.ready { background: var(--accent-soft); color: var(--accent); }
+  .chip.wip { background: var(--gold-soft); color: var(--gold); }
+  .chip.idea { background: var(--paper-sunken); color: var(--ink-faint); }
+  .version-name { margin: 0 0 .5rem; font-size: 1.15rem; }
+  .version-cyr { color: var(--ink-faint); font-weight: 400; font-size: .95rem; }
+  .version p { font-size: .97rem; }
+  .version p:last-child { margin-bottom: 0; }
+  .version .cyr { font-size: .89rem; }
+
+  /* ---------- alphabet ---------- */
+  .alphabet {
+    list-style: none; padding: 0;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(4.6rem, 1fr));
+    gap: .5rem; margin-bottom: 1rem;
+  }
+  .alphabet li {
+    display: flex; flex-direction: column; align-items: center; gap: .1rem;
+    padding: .6rem .3rem;
+    border: 1px solid var(--rule); border-radius: 8px;
+    background: var(--paper-raised); margin: 0;
+  }
+  .a-cyr { font-size: .82rem; color: var(--ink-faint); font-family: var(--font-ui); }
+  .a-lat { font-size: 1.4rem; line-height: 1.1; }
+  .alphabet-note { font-family: var(--font-ui); font-size: .9rem; display: flex; gap: .4rem; flex-wrap: wrap; }
+  .alphabet-note .cyr { font-family: var(--font-serif); }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 60rem) {
+    .story { grid-template-columns: 1fr; }
+    .versions { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 44rem) {
+    .demo-grid { grid-template-columns: 1fr; }
+  }
 </style>
