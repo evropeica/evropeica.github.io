@@ -1,0 +1,153 @@
+---
+import Base from '../../layouts/Base.astro';
+import { withBase } from '../../lib/url';
+
+const examples = [
+  ['Ще не вмерла України ні слава, ні воля', 'Šče ne vmerła Ukraïny ni słava, ni vola'],
+  ['Щастя не купиш за гроші', 'Ščasťa ne kupyš za hroši'],
+  ['Чернівці, Житомир, Львів', 'Černivci, Žytomyr, Lviv'],
+];
+---
+
+<Base lang="en" title="Ukrainian in the Latin alphabet"
+      description="Evropéïća — a Latin orthography for Ukrainian, designed as a second script alongside Cyrillic.">
+  <h1>Ukrainian in the Latin alphabet</h1>
+
+  <p class="lede">
+    Evropéïća is a Latin orthography for Ukrainian. It is designed as a <strong>second script
+    alongside Cyrillic</strong>, not as a replacement for it.
+  </p>
+
+  <div class="samples">
+    {examples.map(([cyr, lat]) => (
+      <div class="sample">
+        <p class="sample-cyr">{cyr}</p>
+        <p class="sample-lat">{lat}</p>
+      </div>
+    ))}
+  </div>
+
+  <h2>What it is</h2>
+
+  <p>
+    Ukrainian is written in Cyrillic, and has been for a thousand years. Evropéïća adds a
+    parallel way of writing the same language in Latin letters, using the Czech and Polish
+    diacritic tradition — Č, Š, Ž, Ł, Ń — which Ukrainian already shares with its western
+    neighbours through Belarusian Łacinka.
+  </p>
+
+  <p>
+    Writing is a medium, not the language itself. Serbian is written in both alphabets and is
+    no less Serbian for it. Nothing here proposes taking Cyrillic away.
+  </p>
+
+  <h2>Why it might matter</h2>
+
+  <ul class="why">
+    <li>
+      <strong>European integration.</strong> Most of the European Union writes in Latin script.
+      A shared alphabet shortens the distance in ordinary things: documents, signage, place
+      names, academic publishing.
+    </li>
+    <li>
+      <strong>Legibility to neighbours.</strong> Poles, Czechs, Slovaks, Croats and Lithuanians
+      read Latin script every day. Ukrainian written this way becomes partly readable to them
+      without a dictionary — and Ukrainian words travel into other languages correctly spelled.
+    </li>
+    <li>
+      <strong>Technology and schooling.</strong> Most software and international standards are
+      built around the Latin alphabet. One keyboard layout instead of two is simpler, and
+      children who write Latin letters early find other European languages easier to learn.
+    </li>
+    <li>
+      <strong>Control of your own names.</strong> Transliteration of Ukrainian names is still
+      inconsistent: the same city is spelled several ways across road signs, passports and
+      foreign media. An agreed orthography lets Ukrainian export its own spelling instead of
+      inheriting someone else's.
+    </li>
+  </ul>
+
+  <h2>How it is built</h2>
+
+  <p>
+    An orthography proposal is usually a document, and documents drift from their own examples.
+    This one is executable. The rules live in a
+    <a href="https://github.com/evropeica/evropeica.github.io/blob/master/docs/RULEBOOK.md">rulebook</a>
+    where each has an identifier; a reference engine implements them; a second implementation in
+    another language is cross-checked against the first; and a checker re-transliterates every
+    Ukrainian sentence on this website and fails the build if the published text disagrees with
+    the engine.
+  </p>
+
+  <p>The system is layered, so each version adds rules on top of the last:</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Version</th><th>Name</th><th>What it does</th><th>State</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>1.0</strong></td><td>Transliterácija</td>
+          <td>Deterministic one-to-one transliteration from modern Cyrillic</td><td>stable</td>
+        </tr>
+        <tr>
+          <td><strong>2.0</strong></td><td>Ortografija</td>
+          <td>Etymological spelling of loanwords, restoring the original pronunciation</td><td>in progress</td>
+        </tr>
+        <tr>
+          <td><strong>2.1</strong></td><td>Nahołos</td>
+          <td>Stress marks, written only when stress is not on the first root vowel</td><td>in progress</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>Try it</h2>
+
+  <p>
+    The <a href={withBase('/converter/')}>converter</a> turns Cyrillic into version 1.0 in real
+    time. The <a href={withBase('/spec/v1/')}>specification</a> gives the full alphabet and every
+    rule with examples, and there is a
+    <a href={withBase('/keyboard/')}>keyboard layout</a> you can install.
+  </p>
+
+  <h2>Status</h2>
+
+  <p>
+    This is an independent proposal, not a standard and not endorsed by any institution.
+    Version 1.0 is stable; versions 2.0 and 2.1 are still moving. Corrections to the rules or the
+    examples are welcome as issues or pull requests on
+    <a href="https://github.com/evropeica/evropeica.github.io">GitHub</a>.
+  </p>
+
+  <p class="next">
+    <a class="btn btn-primary" href={withBase('/converter/')}>Open the converter &rarr;</a>
+    <a class="btn" href={withBase('/')}>Ukrainian version</a>
+  </p>
+</Base>
+
+<style>
+  .lede { font-size: 1.2rem; max-width: 40rem; margin-bottom: 1.75rem; }
+  main > p, main > ul { max-width: 40rem; }
+
+  .samples { display: grid; gap: .75rem; margin-bottom: 2rem; }
+  .sample {
+    padding: .9rem 1.1rem; border: 1px solid var(--rule);
+    border-radius: var(--radius); background: var(--paper-raised);
+  }
+  .sample-cyr { color: var(--ink-faint); font-style: italic; font-size: .95rem; margin-bottom: .2rem; }
+  .sample-lat { font-size: 1.1rem; margin-bottom: 0; }
+
+  .why li { margin-bottom: .85rem; }
+
+  .next { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: 2.5rem; }
+  .btn {
+    font-family: var(--font-ui); font-size: .9rem; font-weight: 500;
+    padding: .55rem 1.1rem; border-radius: 8px;
+    border: 1px solid var(--rule-strong);
+    color: var(--ink); text-decoration: none; background: var(--paper-raised);
+  }
+  .btn:hover { border-color: var(--accent); color: var(--accent); }
+  .btn-primary { background: var(--accent); border-color: var(--accent); color: var(--paper-raised); }
+  .btn-primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); color: var(--paper-raised); }
+  @media (prefers-color-scheme: dark) { .btn-primary, .btn-primary:hover { color: #10151a; } }
+</style>

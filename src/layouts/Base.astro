@@ -5,23 +5,45 @@ interface Props {
   title: string;
   description?: string;
   wide?: boolean;
+  lang?: 'uk' | 'en';
 }
 
-const { title, description = 'Evropéïća — Ukrainian Latin orthography project', wide = false } = Astro.props;
+const {
+  title,
+  description = 'Evropéïća — Ukrainian Latin orthography project',
+  wide = false,
+  lang = 'uk',
+} = Astro.props;
 
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
-const nav = [
-  { href: '/spec/', label: 'Spec' },
-  { href: '/spec/v1/', label: 'v1.0' },
-  { href: '/spec/v2/', label: 'v2.0' },
-  { href: '/converter/', label: 'Konverter' },
-  { href: '/keyboard/', label: 'Kłaviatura' },
-];
+
+const NAV = {
+  uk: [
+    { href: '/motyvacija/', label: 'Motyvacija' },
+    { href: '/spec/', label: 'Spec' },
+    { href: '/converter/', label: 'Konverter' },
+    { href: '/keyboard/', label: 'Kłaviatura' },
+  ],
+  en: [
+    { href: '/en/', label: 'About' },
+    { href: '/spec/', label: 'Spec' },
+    { href: '/converter/', label: 'Converter' },
+    { href: '/keyboard/', label: 'Keyboard' },
+  ],
+};
+const nav = NAV[lang];
+const alt = lang === 'en'
+  ? { href: '/', label: 'UK', title: 'Ukraïnśkoju' }
+  : { href: '/en/', label: 'EN', title: 'In English' };
+const home = lang === 'en' ? '/en/' : '/';
+const footNote = lang === 'en'
+  ? 'Code — MIT. Specification and text — CC BY 4.0. © 2026'
+  : 'Kod — MIT. Specyfikacija ta tekst — CC BY 4.0. © 2026';
 const isActive = (href: string) => path === href.replace(/\/$/, '');
 ---
 
 <!doctype html>
-<html lang="uk">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -38,16 +60,19 @@ const isActive = (href: string) => path === href.replace(/\/$/, '');
 
     <header class="site-head">
       <div class="head-inner">
-        <a href={withBase('/')} class="brand">
+        <a href={withBase(home)} class="brand">
           <span class="brand-mark">E</span>
           <span class="brand-name">Evropéïća</span>
         </a>
-        <nav class="nav" aria-label="Hołovna navigacija">
+        <nav class="nav" aria-label={lang === 'en' ? 'Main navigation' : 'Hołovna navigacija'}>
           {nav.map(item => (
             <a href={withBase(item.href)} class:list={['nav-link', { active: isActive(item.href) }]}>
               {item.label}
             </a>
           ))}
+          <a class="nav-link lang" href={withBase(alt.href)} title={alt.title} hreflang={alt.label.toLowerCase()}>
+            {alt.label}
+          </a>
         </nav>
       </div>
     </header>
@@ -59,14 +84,12 @@ const isActive = (href: string) => path === href.replace(/\/$/, '');
     <footer class="site-foot">
       <div class="foot-inner">
         <p class="foot-brand">Evropéïća</p>
-        <nav class="foot-links" aria-label="Dodatkovi posyłanńa">
+        <nav class="foot-links" aria-label={lang === 'en' ? 'Further links' : 'Dodatkovi posyłanńa'}>
           <a href="https://github.com/evropeica/evropeica.github.io">GitHub</a>
           <a href="https://github.com/evropeica/evropeica.github.io/blob/master/docs/RULEBOOK.md">Rulebook</a>
           <a href={withBase('/keyboards/evropeica.kmx')}>Keyman .kmx</a>
         </nav>
-        <p class="foot-note">
-          Kod — MIT. Specyfikacija ta tekst — CC BY 4.0. &copy; 2026
-        </p>
+        <p class="foot-note">{footNote}</p>
       </div>
     </footer>
   </body>
@@ -251,6 +274,12 @@ const isActive = (href: string) => path === href.replace(/\/$/, '');
   }
   .nav-link:hover { color: var(--ink); background: var(--paper-sunken); }
   .nav-link.active { color: var(--accent); background: var(--accent-soft); font-weight: 600; }
+  .nav-link.lang {
+    border: 1px solid var(--rule-strong);
+    font-size: .78rem; font-weight: 600; letter-spacing: .04em;
+    margin-left: .35rem;
+  }
+  .nav-link.lang:hover { border-color: var(--accent); color: var(--accent); background: transparent; }
 
   .main {
     flex: 1; width: 100%;

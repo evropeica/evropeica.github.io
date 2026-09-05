@@ -40,6 +40,18 @@ PAGES_DIR = REPO_ROOT / 'src' / 'pages'
 LEXICON_PATH = REPO_ROOT / 'data' / 'v2-lexicon.json'
 V1_PAGE_RELPATH = 'src/pages/spec/v1.astro'
 
+# Pages written in another natural language carry no Cyrillic twins and are not
+# Ukrainian Latin, so neither the twin rules nor the §1 inventory apply to them.
+SKIP_DIRS = {'en'}
+
+
+def pages():
+    """Every .astro page the rulebook's site rules (S1-S6) actually govern."""
+    for path in sorted(PAGES_DIR.rglob('*.astro')):
+        if SKIP_DIRS & set(path.relative_to(PAGES_DIR).parts[:-1]):
+            continue
+        yield path
+
 # --------------------------------------------------------------------------
 # Shared word tokenizer: a maximal run of Unicode letters, optionally
 # continued across an internal apostrophe/hyphen (so "м'яч", "пів-яблука"
@@ -565,7 +577,7 @@ def check_file(path, lexicon):
 def run_check():
     lexicon = load_lexicon()
     all_findings = []
-    for path in sorted(PAGES_DIR.rglob('*.astro')):
+    for path in pages():
         findings, _ = check_file(path, lexicon)
         all_findings.extend(findings)
     return all_findings
@@ -573,7 +585,7 @@ def run_check():
 
 def run_fix_chars():
     changes = defaultdict(list)
-    for path in sorted(PAGES_DIR.rglob('*.astro')):
+    for path in pages():
         raw = nfc(path.read_text(encoding='utf-8'))
         root = parse_file(raw)
         fixes = fixable_words(root)

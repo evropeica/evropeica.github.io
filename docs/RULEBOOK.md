@@ -167,7 +167,8 @@ Words currently written in v2.0 on the site must appear in `data/v2-lexicon.json
 
 | ID | Rule |
 |---|---|
-| S1 | `/spec/v1/` is written in **pure v1.0** — no stress marks, no v2.0 vocabulary. Every Latin string there must equal the engine output for its Cyrillic twin. |
+| S1 | `/spec/v1/` and `/motyvacija/` are written in **pure v1.0** — no stress marks, no v2.0 vocabulary. Every Latin string there must equal the engine output for its Cyrillic twin. Motyvacija is long-form argument, and hand-placed stress on that much prose would be unverifiable until the stress dictionary lands, so it stays unstressed and says so at the top. |
+| S1b | Pages in another natural language live under `src/pages/<lang>/` (currently `en/`). They carry no Cyrillic twins, so S1–S4 do not apply and `tools/check_site.py` skips them. Ukrainian quoted inside them is illustrative and must still be correct. |
 | S2 | All other pages may use v2.0 vocabulary (every such word must be in `data/v2-lexicon.json`). Stress marks (v2.1) are used on `/`, `/spec/`, `/converter/` and `/keyboard/`; the long prose of `/spec/v2/` stays unstressed until the Lexykon integration, except the v2.1 examples table. The checker strips acute accents and applies the lexicon before comparing to the engine, so a wrong stress position is *not* caught automatically — check it against a dictionary. |
 | S3 | Every Latin paragraph, heading and table cell has a Cyrillic twin (either `Lat / Cyr` in one heading, a following `<p class="cyr">`, or the second column of a `.bilingual` block). Text without a twin cannot be checked and is not allowed except for foreign names and code. |
 | S4 | Only characters from the §1 inventory (plus v2.1 accents) may appear inside Latin Ukrainian words. In particular: Latin ï (U+00EF), never Cyrillic ї (U+0457); l, never ľ; no apostrophes inside words. |

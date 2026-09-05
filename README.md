@@ -71,7 +71,8 @@ The interesting cases, all decided in the rulebook:
 ```
 docs/RULEBOOK.md          normative specification — start here
 src/lib/transliterate.ts  v1.0 engine (TypeScript), used by the site converter
-src/pages/                website: home, spec, converter, keyboard
+src/pages/                website: home, motyvacija, spec, converter, keyboard
+src/pages/en/             English section (skipped by the site checker)
 tools/evropeica.py        Python port of the engine
 tools/check_site.py       verifies website text against the engine
 data/v2-lexicon.json      accepted v2.0 loanword spellings

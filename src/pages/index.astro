@@ -96,6 +96,11 @@ const versions = [
     </article>
   </div>
 
+  <p class="story-more">
+    <a href={withBase('/motyvacija/')}>Čytaty motyvaciju &rarr;</a>
+    <span class="cyr">/ Читати мотивацію</span>
+  </p>
+
   <h2>Versiï / Версії</h2>
 
   <div class="versions">
@@ -265,6 +270,9 @@ const versions = [
   .story-card p { font-size: .98rem; }
   .story-card p:last-child { margin-bottom: 0; }
   .story-card .cyr { font-size: .9rem; }
+
+  .story-more { font-family: var(--font-ui); font-size: .92rem; display: flex; gap: .4rem; flex-wrap: wrap; }
+  .story-more .cyr { font-family: var(--font-serif); }
 
   /* ---------- versions ---------- */
   .versions { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; }
