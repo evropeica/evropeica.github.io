@@ -147,4 +147,6 @@ Dual-licensed, so that the tooling stays reusable and the orthography stays free
 - **Code** — MIT ([LICENSE](LICENSE)). Covers `src/`, `tools/`, `tests/`, `keyboards/`, and the build configuration.
 - **Specification and content** — CC BY 4.0 ([LICENSE-CC-BY-4.0.txt](LICENSE-CC-BY-4.0.txt)). Covers `docs/RULEBOOK.md`, `data/v2-lexicon.json`, and the prose, tables and examples of the website.
 
+**Bundled typeface** — the site self-hosts [Literata](https://github.com/googlefonts/literata) under the SIL Open Font License 1.1 (`public/fonts/OFL.txt`). It was chosen because it is one of the few text faces that actually has glyphs for `ḯ`, `Ḯ`, `ĭ` and `Ĭ`, which this orthography needs.
+
 The website pages under `src/pages/` are code and content in one file: the Astro markup is MIT, the orthographic text it contains is also available under CC BY 4.0. Quoting the specification only requires attribution to the Evropéïća project with a link back.
