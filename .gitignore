@@ -1,4 +1,16 @@
+# dependencies & build output
 node_modules/
 dist/
 .astro/
+
+# Keyman compiler artifacts (source of truth is the .kmn;
+# the served copy is public/keyboards/evropeica.kmx)
+keyboards/*.kmx
 keyboards/*.js
+
+# python
+__pycache__/
+*.py[cod]
+
+# local scratch, drafts and superseded notes — never committed
+_local/

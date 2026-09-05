@@ -9,12 +9,13 @@ Reference website + engine for the Evropéïća Ukrainian Latin orthography.
 - Astro 5.x static site, no framework components; vanilla TS in `<script>`.
 - Engine: `src/lib/transliterate.ts` (v1.0). Python twin: `tools/evropeica.py`.
 - Site spellchecker: `tools/check_site.py` (twins every Latin string with its Cyrillic and diffs against the engine; v2.0 words come from `data/v2-lexicon.json`).
-- Keyboard: `keyboards/evropeica.kmn` → compile with `npx --yes @keymanapp/kmc build keyboards/evropeica.kmn`, copy `.kmx` to `public/keyboards/`.
+- Keyboard: `keyboards/evropeica.kmn` → compile with `npx --yes @keymanapp/kmc build keyboards/evropeica.kmn`, copy the `.kmx` to `public/keyboards/` (the compiled file in `keyboards/` is a build artifact and is git-ignored).
 
 ## Layout
 - `src/pages/index.astro`, `spec/index.astro`, `spec/v1.astro`, `spec/v2.astro`, `converter.astro`, `keyboard.astro`
 - `src/layouts/Base.astro` — nav, footer, global CSS
-- `docs/` — RULEBOOK, audits
+- `src/lib/url.ts` — `withBase()`; every internal link goes through it because the site is served from a `/evropeica` base path
+- `docs/RULEBOOK.md` — the specification
 - `tests/` — `cases.json` + `run.mjs`
 
 ## Writing site text (RULEBOOK §6)
@@ -23,10 +24,17 @@ Reference website + engine for the Evropéïća Ukrainian Latin orthography.
 - Every Latin paragraph/heading/cell needs a Cyrillic twin so the checker can verify it.
 - Brand is `Evropéïća` with Latin ï (U+00EF). Never Cyrillic ї inside Latin words, never ľ.
 
+## Deployment
+GitHub Pages via `.github/workflows/deploy.yml` on push to `master`. The workflow runs the three checks before building. Published at https://akrivonos.github.io/evropeica/ with `base: '/evropeica'`; moving to a user/org site or custom domain means changing `site` and `base` in `astro.config.mjs` only.
+
+## Licensing
+Dual: MIT for code, CC BY 4.0 for the specification and site content. Keep new files consistent with that split and do not paste in text of unknown provenance.
+
 ## Environment
 - Windows. Python is `py` (3.14); bare `python` is a Store stub. Node 24.
 - `npm run dev` → http://localhost:4321; `npm run build` → `dist/`.
+- Local scratch and superseded working notes live in `_local/` (git-ignored).
 
 ## Related
-- Lexykon — stress dictionary for the future v2.1 converter.
-- Belarusian Łacinka and the Czech ÚJČ transcription rules for Ukrainian are the two external reference systems.
+- Lexykon — stress dictionary intended to drive the future v2.1 converter.
+- Reference systems worth consulting: Belarusian Łacinka, the Czech ÚJČ transcription rules for Ukrainian, DSTU 9112:2021.

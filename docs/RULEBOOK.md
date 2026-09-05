@@ -182,3 +182,7 @@ Words currently written in v2.0 on the site must appear in `data/v2-lexicon.json
 2. **ĭ**: with R5b in place the letter appears only in foreign/dialect words (R5c). Keep it in the alphabet or drop it and write j?
 3. **V2-§8 boundary**: which loanwords count as "foreign" for plain l (e.g. лампа, клас, план — Slavicised centuries ago)? Proposal: only Greek/Latin/Western learned vocabulary and modern borrowings; everyday old loans keep ł.
 4. **V2-§2**: the list of words that regain initial h is closed (harfa, historija, histerija, homonim, hijerohlif…); it needs a lexicon, not a rule.
+
+---
+
+*This specification is licensed [CC BY 4.0](../LICENSE-CC-BY-4.0.txt). Quote it freely with attribution to the Evropéïća project. The reference implementation is MIT-licensed; see [LICENSE](../LICENSE).*
