@@ -49,6 +49,9 @@ const site = Astro.site ?? new URL('https://evropeica.github.io');
 const canonical = new URL(Astro.url.pathname, site).href;
 const ukHome = new URL(withBase('/'), site).href;
 const enHome = new URL(withBase('/en/'), site).href;
+const ogImage = new URL(withBase('/og.png'), site).href;
+const ogImageAlt = 'Evropéïća — Ukraïnśka mova łatynśkymy literamy, '
+  + 'with the diacritic letters Č Š Ž Ł Ď Ť Ź Ś Ć Ń Ŕ Ï Ḯ';
 ---
 
 <!doctype html>
@@ -70,7 +73,14 @@ const enHome = new URL(withBase('/en/'), site).href;
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:locale" content={lang === 'en' ? 'en_GB' : 'uk_UA'} />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ogImageAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
     <link rel="preload" as="font" type="font/woff2" crossorigin
           href={withBase('/fonts/literata-latin-normal.woff2')} />
     <link rel="stylesheet" href={withBase('/fonts/literata.css')} />

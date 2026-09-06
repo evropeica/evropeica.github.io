@@ -75,6 +75,7 @@ src/pages/                website: home, motyvacija, spec, converter, keyboard
 src/pages/en/             English section (skipped by the site checker)
 tools/evropeica.py        Python port of the engine
 tools/check_site.py       verifies website text against the engine
+tools/make_og_image.py    regenerates public/og.png, the link-preview card
 data/v2-lexicon.json      accepted v2.0 loanword spellings
 tests/                    fixtures + runner
 keyboards/evropeica.kmn   Keyman keyboard source (QWERTZ, two dead keys)
